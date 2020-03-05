@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".component.TitleBarActivity">
+
+    <com.thomas.ui.ThomasTitleBar
+        android:id="@+id/thomasTitleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bottomShadowHeight="0dp"
+        app:centerText="ThomasTitleBar示例"
+        app:centerTextColor="@color/thomasTitleTextColor"
+        app:centerType="textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:leftType="imageButton"
+        app:rightType="none"
+        app:showBottomLine="false"
+        app:statusBarMode="dark" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/thomasTitleBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.thomas.ui.ThomasTitleBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:centerText="标题栏"
+                app:centerType="textView"
+                app:fillStatusBar="false"
+                app:leftType="imageButton" />
+
+            <com.thomas.ui.ThomasTitleBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:centerText="标题栏"
+                app:centerType="textView"
+                app:fillStatusBar="false"
+                app:leftCustomView="@layout/layout_custom_left"
+                app:leftType="customView" />
+
+            <com.thomas.ui.ThomasTitleBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:centerCustomView="@layout/layout_custom_left"
+                app:centerText="标题栏"
+                app:centerType="textView"
+                app:fillStatusBar="false"
+                app:rightText="确定"
+                app:rightType="textView" />
+
+            <com.thomas.ui.ThomasTitleBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:centerCustomView="@layout/layout_custom_left"
+                app:centerText="标题栏"
+                app:centerType="textView"
+                app:fillStatusBar="false"
+                app:rightImageResource="@mipmap/selected_search"
+                app:rightType="imageButton" />
+
+            <com.thomas.ui.ThomasTitleBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:centerText="标题栏"
+                app:centerType="textView"
+                app:fillStatusBar="false"
+                app:rightCustomView="@layout/layout_custom_right"
+                app:rightType="customView" />
+
+            <com.thomas.ui.ThomasTitleBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:centerText="功能说明：商品图片、商品信息、店铺信息、物流信息、猜你喜欢、商品详情等信息的展示"
+                app:centerType="textView"
+                app:fillStatusBar="false"
+                app:leftType="imageButton"
+                app:rightText="确定"
+                app:rightType="textView" />
+
+            <com.thomas.ui.ThomasTitleBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:centerSubText="无线研发部"
+                app:centerText="标题栏"
+                app:centerType="textView"
+                app:fillStatusBar="false"
+                app:leftType="imageButton"
+                app:rightText="确定"
+                app:rightType="textView" />
+
+            <com.thomas.ui.ThomasTitleBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:centerCustomView="@layout/layout_custom_left"
+                app:centerType="customView"
+                app:fillStatusBar="false"
+                app:leftType="imageButton"
+                app:rightText="确定"
+                app:rightType="textView" />
+
+            <com.thomas.ui.ThomasTitleBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:centerType="searchView"
+                app:fillStatusBar="false"
+                app:leftType="imageButton"
+                app:rightText="确定"
+                app:rightType="textView" />
+
+            <com.thomas.ui.ThomasTitleBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:centerType="searchView"
+                app:fillStatusBar="false"
+                app:leftCustomView="@layout/layout_custom_left"
+                app:leftType="customView"
+                app:rightCustomView="@layout/layout_custom_right_simple"
+                app:rightType="customView" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

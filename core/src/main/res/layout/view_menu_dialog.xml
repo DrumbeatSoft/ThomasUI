@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/thomas_shape_r8_white"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/thomas_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="@dimen/thomasNormalPadding"
+        android:paddingTop="@dimen/thomasNormalPadding"
+        android:paddingRight="@dimen/thomasNormalPadding"
+        android:textColor="@color/thomasTitleTextColor"
+        android:textSize="@dimen/thomasTitleSize"
+        tools:text="标题" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="@dimen/thomasSmallPadding">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/thomas_rv_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.core.widget.NestedScrollView>
+
+    <View
+        android:id="@+id/thomas_divider_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/thomasDividerHeight"
+        android:layout_marginLeft="@dimen/thomasNormalMargin"
+        android:layout_marginRight="@dimen/thomasNormalMargin"
+        android:background="@color/thomasPressedStateColor" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-0.5dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/thomas_btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/thomas_r8_selector"
+            android:gravity="center"
+            android:padding="@dimen/thomasNormalPadding"
+            android:textColor="@color/thomasButtonTextColor"
+            android:textSize="@dimen/thomasButtonSize"
+            tools:text="取消" />
+
+        <View
+            android:id="@+id/thomas_divider_vertical"
+            android:layout_width="@dimen/thomasDividerWidth"
+            android:layout_height="16dp"
+            android:layout_marginLeft="@dimen/thomasNormalMargin"
+            android:layout_marginRight="@dimen/thomasNormalMargin"
+            android:background="@color/thomasPressedStateColor" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/thomas_btn_ok"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/thomas_r8_selector"
+            android:gravity="center"
+            android:padding="16dp"
+            android:textColor="@color/thomasButtonTextColor"
+            android:textSize="@dimen/thomasButtonSize"
+            tools:text="确定" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

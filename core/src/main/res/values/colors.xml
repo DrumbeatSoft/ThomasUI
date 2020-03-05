@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App 样式中引用的颜色 -->
+    <color name="colorPrimary">@android:color/white</color>
+    <color name="colorPrimaryDark">@android:color/black</color>
+    <color name="colorAccent">#5A8DDF</color>
+    <color name="thomasWindowBackground">#F3F3F3</color>
+    <color name="thomasTextColor">#333333</color>
+    <color name="thomasTextColorHint">#AAAAAA</color>
+
+    <color name="thomasTitleTextColor">#333333</color>
+    <color name="thomasContentTextColor">#777777</color>
+    <color name="thomasButtonTextColor">#444444</color>
+    <color name="thomasPressedStateColor">#E6E6E6E6</color>
+    <color name="thomasNormalStateColor">@android:color/transparent</color>
+
+    <!-- 按钮按压时的颜色 -->
+    <color name="thomasButtonPressedColor">#1976D2</color>
+    <!-- 按钮禁用时的颜色 -->
+    <color name="thomasButtonDisableColor">#BBBBBB</color>
+</resources>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="thomasDefaultStatusNone"/>
+    <string name="thomasDefaultStatusLoading">加载中</string>
+    <string name="thomasDefaultStatusEmpty">暂无数据</string>
+    <string name="thomasDefaultStatusFailed">加载失败，点击重试</string>
+    <string name="thomasTitleBarSearchHint">搜索</string>
+</resources>

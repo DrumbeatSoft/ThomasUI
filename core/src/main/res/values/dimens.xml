@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="thomasNormalMargin">16dp</dimen>
+    <dimen name="thomasSmallMargin">8dp</dimen>
+    <dimen name="thomasLargeMargin">32dp</dimen>
+    <dimen name="thomasNormalPadding">16dp</dimen>
+    <dimen name="thomasSmallPadding">8dp</dimen>
+    <dimen name="thomasLargePadding">32dp</dimen>
+
+    <dimen name="thomasDividerHeight">0.5dp</dimen>
+    <dimen name="thomasDividerWidth">0.5dp</dimen>
+
+    <dimen name="thomasTitleSize">16sp</dimen>
+    <dimen name="thomasContentSize">14sp</dimen>
+    <dimen name="thomasButtonSize">14sp</dimen>
+    <dimen name="thomasSmallSize">12sp</dimen>
+    <dimen name="thomasLargeSize">18sp</dimen>
+
+    <dimen name="thomasButtonRoundSize">8dp</dimen>
+</resources>
