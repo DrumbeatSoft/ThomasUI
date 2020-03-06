@@ -6,8 +6,8 @@ import com.thomas.ui.demo.R;
 
 import java.util.List;
 
-public class DialogAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
-    public DialogAdapter(List<String> data) {
+public class ItemAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
+    public ItemAdapter(List<String> data) {
         super(R.layout.item_dialog, data);
     }
 

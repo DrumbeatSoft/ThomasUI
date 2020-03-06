@@ -35,18 +35,18 @@ public class MessageDialog extends BaseLazyPopupWindow {
         setPopupGravity(Gravity.CENTER);
         setClipChildren(false);
         this.builder = builder;
-        if (ScreenHelper.isLandscape(getContext())) {
+        if (ScreenHelper.isLandscape(context)) {
             //横屏
-            setMaxHeight( ScreenHelper.getScreenHeight(getContext())/ 2);
-            setMaxWidth(ScreenHelper.getScreenWidth(getContext()) / 3);
-            setMinWidth(ScreenHelper.getScreenWidth(getContext()) / 3);
-            setMinHeight(ScreenHelper.getScreenHeight(getContext()) / 4);
+            setMaxHeight(ScreenHelper.getScreenHeight(context) / 2);
+            setMaxWidth(ScreenHelper.getScreenWidth(context) / 3);
+            setMinWidth(ScreenHelper.getScreenWidth(context) / 3);
+            setMinHeight(ScreenHelper.getScreenHeight(context) / 4);
         } else {
             //竖屏
-            setMaxHeight(ScreenHelper.getScreenHeight(getContext()) / 3);
-            setMaxWidth((ScreenHelper.getScreenWidth(getContext()) / 3) * 2);
-            setMinWidth(ScreenHelper.getScreenWidth(getContext()) / 3);
-            setMinHeight(ScreenHelper.getScreenHeight(getContext()) / 4);
+            setMaxHeight(ScreenHelper.getScreenHeight(context) / 3);
+            setMaxWidth((ScreenHelper.getScreenWidth(context) / 3) * 2);
+            setMinWidth(ScreenHelper.getScreenWidth(context) / 3);
+            setMinHeight(ScreenHelper.getScreenHeight(context) / 4);
         }
     }
 
@@ -164,7 +164,6 @@ public class MessageDialog extends BaseLazyPopupWindow {
         }
 
     }
-
 
 
 }

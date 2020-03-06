@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ThomasAppTheme">
-        <activity android:name=".component.TitleBarActivity"></activity>
+        <activity android:name=".component.TitleBarActivity"/>
         <activity android:name=".component.DialogActivity" />
+        <activity android:name=".component.TipsActivity" />
         <activity
             android:name=".example.HomeActivity"
             android:alwaysRetainTaskState="true"

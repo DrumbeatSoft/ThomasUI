@@ -16,7 +16,7 @@ import com.thomas.core.utils.ToastUtils;
 import com.thomas.ui.ThomasDialog;
 import com.thomas.ui.ThomasTitleBar;
 import com.thomas.ui.demo.R;
-import com.thomas.ui.demo.adapter.DialogAdapter;
+import com.thomas.ui.demo.adapter.ItemAdapter;
 import com.thomas.ui.demo.base.DemoActivity;
 import com.thomas.ui.demo.entity.MenuBean;
 import com.thomas.ui.dialog.OnDateClickListener;
@@ -36,7 +36,7 @@ public class DialogActivity extends DemoActivity {
     @BindView(R.id.rv_dialog)
     RecyclerView rvDialog;
 
-    private DialogAdapter adapter;
+    private ItemAdapter adapter;
     private List<String> datas = new ArrayList<>();
     private List<MenuBean> lessDatas = new ArrayList<>();
     private List<MenuBean> manyDatas = new ArrayList<>();
@@ -87,7 +87,7 @@ public class DialogActivity extends DemoActivity {
         datas.add("多选弹窗\n(带标题和自定义按钮文字的)");
         datas.add("日期弹窗\n(带标题)");
         datas.add("日期弹窗\n(不带标题,有“日”选项)");
-        adapter = new DialogAdapter(datas);
+        adapter = new ItemAdapter(datas);
         rvDialog.setLayoutManager(new GridLayoutManager(mActivity, 3));
         rvDialog.setAdapter(adapter);
         adapter.setOnItemClickListener(new OnItemClickListener() {
