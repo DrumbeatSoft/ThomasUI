@@ -11,6 +11,7 @@
     <color name="thomasTitleTextColor">#333333</color>
     <color name="thomasContentTextColor">#777777</color>
     <color name="thomasButtonTextColor">#444444</color>
+    <color name="thomasDividerColor">#E6E6E6E6</color>
     <color name="thomasPressedStateColor">#E6E6E6E6</color>
     <color name="thomasNormalStateColor">@android:color/transparent</color>
 

@@ -228,7 +228,7 @@ public class ThomasDialog {
                 .setSure(sure, onSureClickListener)
                 .setCancel(cancel, onCancelClickListener)
                 .setDialogType(dialogType)
-                .build().showPopupWindow();
+                .build().setPopupFadeEnable(true).showPopupWindow();
     }
 
     public static void showMenuDialog(Context context, int dialogType, String title,
@@ -242,7 +242,7 @@ public class ThomasDialog {
                 .setCancel(cancel)
                 .setOnSureClickListener(onSingleClickListener)
                 .setOnSureClickListener(onMultipleClickListener)
-                .build().showPopupWindow();
+                .build().setPopupFadeEnable(true).showPopupWindow();
     }
 
 
@@ -258,7 +258,7 @@ public class ThomasDialog {
                 .setSure(sure)
                 .setCancel(cancel)
                 .setOnDateClickListener(onDateClickListener)
-                .build().showPopupWindow();
+                .build().setPopupFadeEnable(true).showPopupWindow();
     }
 
 }

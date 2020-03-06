@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:background="@drawable/thomas_r3_selector"
     android:gravity="center"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:padding="@dimen/thomasSmallPadding">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/thomas_tv_item_name"
@@ -14,7 +15,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ellipsize="middle"
-        android:padding="@dimen/thomasSmallPadding"
         android:singleLine="true"
         android:textSize="@dimen/thomasContentSize"
         tools:text="选项一" />

@@ -21,12 +21,13 @@ import com.thomas.ui.helper.ScreenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
+import razerdp.basepopup.BaseLazyPopupWindow;
 import razerdp.basepopup.BasePopupWindow;
 
 /**
  * 菜单居中弹窗，有纯菜单模式，单选模式，多选模式。
  */
-public class MenuDialog<T extends AbsKV> extends BasePopupWindow {
+public class MenuDialog<T extends AbsKV> extends BaseLazyPopupWindow {
 
     private AppCompatTextView tvDialogTitle, tvDialogCancel, tvDialogOk;
     private RecyclerView rvDialogContent;
@@ -37,6 +38,7 @@ public class MenuDialog<T extends AbsKV> extends BasePopupWindow {
 
     private List<T> selectItems = new ArrayList<>();
     private int position = 0;
+    private Builder builder;
 
     private MenuDialog(Context context) {
         super(context);
@@ -46,12 +48,32 @@ public class MenuDialog<T extends AbsKV> extends BasePopupWindow {
         this(context);
         setPopupGravity(Gravity.CENTER);
         setClipChildren(false);
+        this.builder = builder;
+        if (ScreenHelper.isLandscape(getContext())) {
+            //横屏
+            setMaxHeight(ScreenHelper.getScreenHeight(getContext()) / 2);
+            setMaxWidth(ScreenHelper.getScreenWidth(getContext()) / 3);
+            setMinWidth(ScreenHelper.getScreenWidth(getContext()) / 3);
+            setMinHeight(ScreenHelper.getScreenHeight(getContext()) / 4);
+        } else {
+            //竖屏
+            setMaxHeight(ScreenHelper.getScreenHeight(getContext()) / 3);
+            setMaxWidth((ScreenHelper.getScreenWidth(getContext()) / 3) * 2);
+            setMinWidth(ScreenHelper.getScreenWidth(getContext()) / 3);
+            setMinHeight(ScreenHelper.getScreenHeight(getContext()) / 4);
+        }
+
+    }
+
+    @Override
+    public void onViewCreated(View contentView) {
         tvDialogTitle = findViewById(R.id.thomas_tv_title);
         rvDialogContent = findViewById(R.id.thomas_rv_content);
         tvDialogOk = findViewById(R.id.thomas_btn_ok);
         viewDialogDividerVertical = findViewById(R.id.thomas_divider_vertical);
         viewDialogDividerHorizontal = findViewById(R.id.thomas_divider_horizontal);
         tvDialogCancel = findViewById(R.id.thomas_btn_cancel);
+
 
         if (builder.dialogType == TYPE_ONLY_MENU) {
             tvDialogTitle.setVisibility(View.GONE);
@@ -102,10 +124,11 @@ public class MenuDialog<T extends AbsKV> extends BasePopupWindow {
         }
 
 
-        DialogMenuAdapter adapter = new DialogMenuAdapter(builder.items, builder.dialogType);
+        DialogMenuAdapter adapter = new DialogMenuAdapter(builder.dialogType);
 
         rvDialogContent.setAdapter(adapter);
         rvDialogContent.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter.setNewData(builder.items);
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
@@ -128,21 +151,6 @@ public class MenuDialog<T extends AbsKV> extends BasePopupWindow {
                 }
             }
         });
-
-
-        if (ScreenHelper.isLandscape(getContext())) {
-            //横屏
-            setMaxHeight( ScreenHelper.getScreenHeight(getContext())/ 2);
-            setMaxWidth(ScreenHelper.getScreenWidth(getContext()) / 3);
-            setMinWidth(ScreenHelper.getScreenWidth(getContext()) / 3);
-            setMinHeight(ScreenHelper.getScreenHeight(getContext()) / 4);
-        } else {
-            //竖屏
-            setMaxHeight(ScreenHelper.getScreenHeight(getContext()) / 3);
-            setMaxWidth((ScreenHelper.getScreenWidth(getContext()) / 3) * 2);
-            setMinWidth(ScreenHelper.getScreenWidth(getContext()) / 3);
-            setMinHeight(ScreenHelper.getScreenHeight(getContext()) / 4);
-        }
 
     }
 
@@ -220,10 +228,10 @@ public class MenuDialog<T extends AbsKV> extends BasePopupWindow {
 
     private class DialogMenuAdapter<T extends AbsKV> extends BaseQuickAdapter<T, BaseViewHolder> {
         private int dialogType;
+        private static final int SELECT_PAYLOAD = 110;
 
-
-        public DialogMenuAdapter(@Nullable List<T> data, int dialogType) {
-            super(R.layout.item_view_menu_dialog, data);
+        public DialogMenuAdapter(int dialogType) {
+            super(R.layout.item_view_menu_dialog);
             this.dialogType = dialogType;
         }
 
@@ -233,13 +241,27 @@ public class MenuDialog<T extends AbsKV> extends BasePopupWindow {
                 helper.findView(R.id.thomas_iv_item_state).setVisibility(View.GONE);
             } else {
                 helper.findView(R.id.thomas_iv_item_state).setVisibility(View.VISIBLE);
-                if (item.getChoice()) {
-                    helper.setImageResource(R.id.thomas_iv_item_state, R.drawable.thomas_shape_selected);
-                } else {
-                    helper.setImageResource(R.id.thomas_iv_item_state, R.drawable.thomas_shape_unselected);
-                }
             }
             helper.setText(R.id.thomas_tv_item_name, item.getKey());
+            changeState(helper, item, false);
+        }
+
+        @Override
+        protected void convert(BaseViewHolder helper, T item, List<?> payloads) {
+            for (Object payload : payloads) {
+                if (payload instanceof Integer && (int) payload == SELECT_PAYLOAD) {
+                    // 增量刷新，使用动画变化箭头
+                    changeState(helper, item, true);
+                }
+            }
+        }
+    }
+
+    private void changeState(BaseViewHolder helper, AbsKV item, boolean isAnimate) {
+        if (item.getChoice()) {
+            helper.setImageResource(R.id.thomas_iv_item_state, R.drawable.thomas_shape_selected);
+        } else {
+            helper.setImageResource(R.id.thomas_iv_item_state, R.drawable.thomas_shape_unselected);
         }
     }
 }

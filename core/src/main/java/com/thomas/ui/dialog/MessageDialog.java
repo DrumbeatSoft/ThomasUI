@@ -11,18 +11,20 @@ import androidx.appcompat.widget.AppCompatTextView;
 import com.thomas.ui.R;
 import com.thomas.ui.helper.ScreenHelper;
 
+import razerdp.basepopup.BaseLazyPopupWindow;
 import razerdp.basepopup.BasePopupWindow;
 
 /**
  * 消息类型的居中弹窗，最多带有标题，内容，确定按钮，取消按钮内容
  */
-public class MessageDialog extends BasePopupWindow {
+public class MessageDialog extends BaseLazyPopupWindow {
 
     private AppCompatTextView tvDialogTitle, tvDialogContent, tvDialogCancel, tvDialogOk;
     private View viewDialogDivider;
     public static int TYPE_NORMAL_DIALOG = 0;
     public static int TYPE_NO_TITLE = 1;
     public static int TYPE_ONLY_ONE_BUTTON = 2;
+    private Builder builder;
 
     private MessageDialog(Context context) {
         super(context);
@@ -32,10 +34,29 @@ public class MessageDialog extends BasePopupWindow {
         this(context);
         setPopupGravity(Gravity.CENTER);
         setClipChildren(false);
+        this.builder = builder;
+        if (ScreenHelper.isLandscape(getContext())) {
+            //横屏
+            setMaxHeight( ScreenHelper.getScreenHeight(getContext())/ 2);
+            setMaxWidth(ScreenHelper.getScreenWidth(getContext()) / 3);
+            setMinWidth(ScreenHelper.getScreenWidth(getContext()) / 3);
+            setMinHeight(ScreenHelper.getScreenHeight(getContext()) / 4);
+        } else {
+            //竖屏
+            setMaxHeight(ScreenHelper.getScreenHeight(getContext()) / 3);
+            setMaxWidth((ScreenHelper.getScreenWidth(getContext()) / 3) * 2);
+            setMinWidth(ScreenHelper.getScreenWidth(getContext()) / 3);
+            setMinHeight(ScreenHelper.getScreenHeight(getContext()) / 4);
+        }
+    }
+
+
+    @Override
+    public void onViewCreated(View contentView) {
         tvDialogTitle = findViewById(R.id.thomas_tv_title);
         tvDialogContent = findViewById(R.id.thomas_tv_content);
         tvDialogOk = findViewById(R.id.thomas_btn_ok);
-        viewDialogDivider = findViewById(R.id.thomas_divider);
+        viewDialogDivider = findViewById(R.id.thomas_divider_vertical);
         tvDialogCancel = findViewById(R.id.thomas_btn_cancel);
         if (builder.dialogType == TYPE_NO_TITLE) {
             tvDialogTitle.setVisibility(View.GONE);
@@ -73,20 +94,6 @@ public class MessageDialog extends BasePopupWindow {
                 dismissWithOutAnimate();
                 builder.onSureClickListener.onClick();
             });
-        }
-
-        if (ScreenHelper.isLandscape(getContext())) {
-            //横屏
-            setMaxHeight( ScreenHelper.getScreenHeight(getContext())/ 2);
-            setMaxWidth(ScreenHelper.getScreenWidth(getContext()) / 3);
-            setMinWidth(ScreenHelper.getScreenWidth(getContext()) / 3);
-            setMinHeight(ScreenHelper.getScreenHeight(getContext()) / 4);
-        } else {
-            //竖屏
-            setMaxHeight(ScreenHelper.getScreenHeight(getContext()) / 3);
-            setMaxWidth((ScreenHelper.getScreenWidth(getContext()) / 3) * 2);
-            setMinWidth(ScreenHelper.getScreenWidth(getContext()) / 3);
-            setMinHeight(ScreenHelper.getScreenHeight(getContext()) / 4);
         }
     }
 

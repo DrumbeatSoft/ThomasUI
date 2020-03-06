@@ -86,7 +86,7 @@ public class DialogActivity extends DemoActivity {
         datas.add("多选弹窗\n(有很多数据)");
         datas.add("多选弹窗\n(带标题和自定义按钮文字的)");
         datas.add("日期弹窗\n(带标题)");
-        datas.add("日期弹窗\n(带标题,有“日”选项)");
+        datas.add("日期弹窗\n(不带标题,有“日”选项)");
         adapter = new DialogAdapter(datas);
         rvDialog.setLayoutManager(new GridLayoutManager(mActivity, 3));
         rvDialog.setAdapter(adapter);

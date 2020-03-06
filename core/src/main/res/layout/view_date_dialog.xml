@@ -50,13 +50,14 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
+
     <View
         android:id="@+id/thomas_divider_horizontal"
         android:layout_width="match_parent"
         android:layout_height="@dimen/thomasDividerHeight"
         android:layout_marginLeft="@dimen/thomasNormalMargin"
         android:layout_marginRight="@dimen/thomasNormalMargin"
-        android:background="@color/thomasPressedStateColor"
+        android:background="@color/thomasDividerColor"
         android:visibility="invisible" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -73,18 +74,22 @@
             android:layout_weight="1"
             android:background="@drawable/thomas_r8_selector"
             android:gravity="center"
-            android:padding="@dimen/thomasNormalPadding"
+            android:maxLines="1"
+            android:paddingStart="@dimen/thomasSmallPadding"
+            android:paddingTop="@dimen/thomasNormalPadding"
+            android:paddingEnd="@dimen/thomasSmallPadding"
+            android:paddingBottom="@dimen/thomasNormalPadding"
             android:textColor="@color/thomasButtonTextColor"
             android:textSize="@dimen/thomasButtonSize"
             tools:text="取消" />
 
         <View
-            android:id="@+id/thomas_divider"
+            android:id="@+id/thomas_divider_vertical"
             android:layout_width="@dimen/thomasDividerWidth"
             android:layout_height="16dp"
-            android:layout_marginLeft="@dimen/thomasNormalMargin"
-            android:layout_marginRight="@dimen/thomasNormalMargin"
-            android:background="@color/thomasPressedStateColor" />
+            android:layout_marginStart="@dimen/thomasSmallMargin"
+            android:layout_marginEnd="@dimen/thomasSmallMargin"
+            android:background="@color/thomasDividerColor" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/thomas_btn_ok"
@@ -93,7 +98,11 @@
             android:layout_weight="1"
             android:background="@drawable/thomas_r8_selector"
             android:gravity="center"
-            android:padding="16dp"
+            android:maxLines="1"
+            android:paddingStart="@dimen/thomasSmallPadding"
+            android:paddingTop="@dimen/thomasNormalPadding"
+            android:paddingEnd="@dimen/thomasSmallPadding"
+            android:paddingBottom="@dimen/thomasNormalPadding"
             android:textColor="@color/thomasButtonTextColor"
             android:textSize="@dimen/thomasButtonSize"
             tools:text="确定" />

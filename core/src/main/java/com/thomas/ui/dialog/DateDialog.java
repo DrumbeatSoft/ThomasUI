@@ -18,9 +18,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import razerdp.basepopup.BasePopupWindow;
+import razerdp.basepopup.BaseLazyPopupWindow;
 
-public class DateDialog extends BasePopupWindow {
+public class DateDialog extends BaseLazyPopupWindow {
 
 
     private AppCompatTextView tvDialogTitle, tvDialogCancel, tvDialogOk;
@@ -32,6 +32,8 @@ public class DateDialog extends BasePopupWindow {
     private int mCurrentMonth;
     private int mCurrentDay;
 
+    private Builder builder;
+
 
     private DateDialog(Context context) {
         super(context);
@@ -42,16 +44,7 @@ public class DateDialog extends BasePopupWindow {
         this(context);
         setPopupGravity(Gravity.CENTER);
         setClipChildren(false);
-        bindEvent(builder);
-        if (TextUtils.isEmpty(builder.title)) {
-            tvDialogTitle.setVisibility(View.GONE);
-        } else {
-            tvDialogTitle.setVisibility(View.VISIBLE);
-            tvDialogTitle.setText(builder.title);
-        }
-
-        tvDialogCancel.setText(TextUtils.isEmpty(builder.cancel) ? getContext().getString(android.R.string.cancel) : builder.cancel);
-        tvDialogOk.setText(TextUtils.isEmpty(builder.ok) ? getContext().getString(android.R.string.ok) : builder.ok);
+        this.builder = builder;
 
         if (ScreenHelper.isLandscape(getContext())) {
             //横屏
@@ -69,8 +62,8 @@ public class DateDialog extends BasePopupWindow {
 
     }
 
-
-    private void bindEvent(Builder builder) {
+    @Override
+    public void onViewCreated(View contentView) {
         tvDialogTitle = findViewById(R.id.thomas_tv_title);
         tvDialogCancel = findViewById(R.id.thomas_btn_cancel);
         tvDialogOk = findViewById(R.id.thomas_btn_ok);
@@ -78,6 +71,17 @@ public class DateDialog extends BasePopupWindow {
         wvYear = findViewById(R.id.mpvDialogYear);
         wvMonth = findViewById(R.id.mpvDialogMonth);
         wvDay = findViewById(R.id.mpvDialogDay);
+
+        if (TextUtils.isEmpty(builder.title)) {
+            tvDialogTitle.setVisibility(View.GONE);
+        } else {
+            tvDialogTitle.setVisibility(View.VISIBLE);
+            tvDialogTitle.setText(builder.title);
+        }
+
+        tvDialogCancel.setText(TextUtils.isEmpty(builder.cancel) ? getContext().getString(android.R.string.cancel) : builder.cancel);
+        tvDialogOk.setText(TextUtils.isEmpty(builder.ok) ? getContext().getString(android.R.string.ok) : builder.ok);
+
 
         if (builder.hasDay) {
             wvDay.setVisibility(View.VISIBLE);
@@ -141,7 +145,6 @@ public class DateDialog extends BasePopupWindow {
         } else {
             mCurrentDay = 1;
         }
-
     }
 
     private void updateDay(int year, int month) {
