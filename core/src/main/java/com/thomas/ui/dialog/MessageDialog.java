@@ -12,7 +12,6 @@ import com.thomas.ui.R;
 import com.thomas.ui.helper.ScreenHelper;
 
 import razerdp.basepopup.BaseLazyPopupWindow;
-import razerdp.basepopup.BasePopupWindow;
 
 /**
  * 消息类型的居中弹窗，最多带有标题，内容，确定按钮，取消按钮内容
@@ -30,7 +29,7 @@ public class MessageDialog extends BaseLazyPopupWindow {
         super(context);
     }
 
-    public MessageDialog(Context context, Builder builder) {
+    private MessageDialog(Context context, Builder builder) {
         this(context);
         setPopupGravity(Gravity.CENTER);
         setClipChildren(false);
@@ -82,7 +81,7 @@ public class MessageDialog extends BaseLazyPopupWindow {
             tvDialogCancel.setOnClickListener(v -> dismiss());
         } else {
             tvDialogCancel.setOnClickListener(v -> {
-                dismissWithOutAnimate();
+                dismiss();
                 builder.onCancelClickListener.onClick();
             });
         }
@@ -91,7 +90,7 @@ public class MessageDialog extends BaseLazyPopupWindow {
             tvDialogOk.setOnClickListener(v -> dismiss());
         } else {
             tvDialogOk.setOnClickListener(v -> {
-                dismissWithOutAnimate();
+                dismiss();
                 builder.onSureClickListener.onClick();
             });
         }

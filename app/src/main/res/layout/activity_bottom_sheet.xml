@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".component.TipsActivity">
+    tools:context=".component.BottomSheetActivity">
 
     <com.thomas.ui.ThomasTitleBar
         android:id="@+id/thomasTitleBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:bottomShadowHeight="4dp"
-        app:centerText="ThomasTips示例"
+        app:centerText="ThomasBottomSheet示例"
         app:centerTextColor="@color/thomasTitleTextColor"
         app:centerType="textView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +23,7 @@
         app:showBottomLine="true"
         app:statusBarMode="dark" />
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_tips"
+        android:id="@+id/rv_bottom_sheet"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

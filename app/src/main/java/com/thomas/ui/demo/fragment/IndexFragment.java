@@ -11,6 +11,7 @@ import com.thomas.core.utils.ActivityUtils;
 import com.thomas.core.utils.ColorUtils;
 import com.thomas.ui.demo.R;
 import com.thomas.ui.demo.base.DemoLazyFragment;
+import com.thomas.ui.demo.component.BottomSheetActivity;
 import com.thomas.ui.demo.component.DialogActivity;
 import com.thomas.ui.demo.component.TipsActivity;
 import com.thomas.ui.demo.component.TitleBarActivity;
@@ -25,6 +26,8 @@ public class IndexFragment extends DemoLazyFragment {
     AppCompatButton btnTitleBar;
     @BindView(R.id.btn_tips)
     AppCompatButton btnTips;
+    @BindView(R.id.btn_bottom_sheet)
+    AppCompatButton btnBottomSheet;
 
     public static IndexFragment newInstance() {
         IndexFragment fragment = new IndexFragment();
@@ -42,7 +45,7 @@ public class IndexFragment extends DemoLazyFragment {
 
     @Override
     public void initView(@Nullable Bundle savedInstanceState, @Nullable View contentView) {
-        applyThomasClickListener(btnTitleBar, btnDialog, btnTips);
+        applyThomasClickListener(btnTitleBar, btnDialog, btnTips,btnBottomSheet);
     }
 
     @Override
@@ -60,6 +63,9 @@ public class IndexFragment extends DemoLazyFragment {
         }
         if (view == btnTips) {
             ActivityUtils.startActivity(TipsActivity.class);
+        }
+        if (view == btnBottomSheet) {
+            ActivityUtils.startActivity(BottomSheetActivity.class);
         }
     }
 }

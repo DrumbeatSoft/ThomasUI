@@ -89,7 +89,7 @@ public class DateDialog extends BaseLazyPopupWindow {
             wvDay.setVisibility(View.GONE);
         }
         tvDialogOk.setOnClickListener(v -> {
-            dismissWithOutAnimate();
+            dismiss();
             if (builder.onDateClickListener != null) {
                 builder.onDateClickListener.onClick(getDate(mCurrentYear, mCurrentMonth, mCurrentDay));
             }

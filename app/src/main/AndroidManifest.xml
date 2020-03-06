@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.thomas.ui.demo">
 
     <application
@@ -10,16 +11,19 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        tools:ignore="LockedOrientationActivity"
         android:theme="@style/ThomasAppTheme">
-        <activity android:name=".component.TitleBarActivity"/>
+        <activity android:name=".component.TitleBarActivity" />
         <activity android:name=".component.DialogActivity" />
         <activity android:name=".component.TipsActivity" />
+        <activity android:name=".component.BottomSheetActivity"/>
         <activity
             android:name=".example.HomeActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+        />
         <activity
             android:name=".example.WelcomeActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"

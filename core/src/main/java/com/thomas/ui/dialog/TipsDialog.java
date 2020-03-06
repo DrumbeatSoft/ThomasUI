@@ -1,8 +1,6 @@
 package com.thomas.ui.dialog;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -36,11 +34,11 @@ public class TipsDialog extends BaseLazyPopupWindow {
     private Handler handler;
     private int duration = 2000;
 
-    public TipsDialog(Context context) {
+    private TipsDialog(Context context) {
         super(context);
     }
 
-    public TipsDialog(Context context, Builder builder) {
+    private TipsDialog(Context context, Builder builder) {
         this(context);
         this.builder = builder;
         setPopupGravity(Gravity.CENTER);

@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.animation.Animation;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import razerdp.basepopup.BaseLazyPopupWindow;
-import razerdp.basepopup.BasePopupWindow;
 
 /**
  * 菜单居中弹窗，有纯菜单模式，单选模式，多选模式。
@@ -44,7 +42,7 @@ public class MenuDialog<T extends AbsKV> extends BaseLazyPopupWindow {
         super(context);
     }
 
-    public MenuDialog(Context context, Builder builder) {
+    private MenuDialog(Context context, Builder builder) {
         this(context);
         setPopupGravity(Gravity.CENTER);
         setClipChildren(false);
@@ -102,7 +100,7 @@ public class MenuDialog<T extends AbsKV> extends BaseLazyPopupWindow {
         if (builder.dialogType != TYPE_ONLY_MENU) {
 
             tvDialogOk.setOnClickListener(v -> {
-                dismissWithOutAnimate();
+                dismiss();
                 for (int i = 0; i < builder.items.size(); i++) {
                     if (((T) builder.items.get(i)).getChoice()) {
                         if (builder.dialogType == TYPE_SINGLE_MENU) {
