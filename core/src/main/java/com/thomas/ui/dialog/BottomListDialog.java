@@ -54,7 +54,7 @@ public class BottomListDialog extends BaseLazyPopupWindow {
         super.showPopupWindow();
         setAlignBackground(false);
         setClipChildren(false);
-        setPopupGravity(Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL);
+        setPopupGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
     }
 
     @Override
@@ -187,6 +187,14 @@ public class BottomListDialog extends BaseLazyPopupWindow {
         protected void convert(@NonNull BaseViewHolder helper, T item) {
             ((AppCompatTextView) helper.findView(R.id.thomas_tv_item_name)).setGravity(gravity);
             helper.setText(R.id.thomas_tv_item_name, item.getKey());
+            if (gravity == Gravity.CENTER) {
+                helper.findView(R.id.thomas_iv_item_res).setVisibility(View.GONE);
+            } else if (item.getResId() == 0) {
+                helper.findView(R.id.thomas_iv_item_res).setVisibility(View.GONE);
+            } else {
+                helper.findView(R.id.thomas_iv_item_res).setVisibility(View.VISIBLE);
+                helper.setImageResource(R.id.thomas_iv_item_res, item.getResId());
+            }
         }
     }
 }

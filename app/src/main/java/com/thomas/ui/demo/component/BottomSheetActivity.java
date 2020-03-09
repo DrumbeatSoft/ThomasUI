@@ -89,7 +89,7 @@ public class BottomSheetActivity extends DemoActivity {
             @Override
             public void onItemClick(@NonNull BaseQuickAdapter adapter, @NonNull View view, int position) {
                 if (position == 0) {
-                    ThomasBottomSheet.showBottomSheetNormal(mActivity, Gravity.START, lessDatas, new OnSingleClickListener() {
+                    ThomasBottomSheet.showBottomSheetNormal(mActivity, Gravity.START, gridDatas, new OnSingleClickListener() {
                         @Override
                         public void onClick(int position, String key, String value) {
                             ToastUtils.showLong("点击了第" + position + "条数据，key=" + key + ",value=" + value);
