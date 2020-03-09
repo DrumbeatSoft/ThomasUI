@@ -44,8 +44,6 @@ public class MenuDialog<T extends AbsKV> extends BaseLazyPopupWindow {
 
     private MenuDialog(Context context, Builder builder) {
         this(context);
-        setPopupGravity(Gravity.CENTER);
-        setClipChildren(false);
         this.builder = builder;
         if (ScreenHelper.isLandscape(context)) {
             //横屏
@@ -167,6 +165,13 @@ public class MenuDialog<T extends AbsKV> extends BaseLazyPopupWindow {
         return getDefaultScaleAnimation(false);
     }
 
+
+    @Override
+    public void showPopupWindow() {
+        super.showPopupWindow();
+        setPopupGravity(Gravity.CENTER);
+        setClipChildren(false);
+    }
 
     public static class Builder<T extends AbsKV> {
         private Context context;

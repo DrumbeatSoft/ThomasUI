@@ -32,6 +32,11 @@ public class TipsDialog extends BaseLazyPopupWindow {
 
 
     private Handler handler;
+    private Runnable dismissRunnable = () -> {
+        if (isShowing()) {
+            dismiss();
+        }
+    };
     private int duration = 2000;
 
     private TipsDialog(Context context) {
@@ -40,10 +45,8 @@ public class TipsDialog extends BaseLazyPopupWindow {
 
     private TipsDialog(Context context, Builder builder) {
         this(context);
-        this.builder = builder;
-        setPopupGravity(Gravity.CENTER);
         setBackgroundColor(android.R.color.transparent);
-
+        this.builder = builder;
         if (ScreenHelper.isLandscape(context)) {
             setMaxHeight(ScreenHelper.getScreenWidth(context) / 6);
             setMinHeight(ScreenHelper.getScreenWidth(context) / 6);
@@ -116,7 +119,7 @@ public class TipsDialog extends BaseLazyPopupWindow {
             ivState.setVisibility(View.VISIBLE);
         }
 
-        if (builder.type == TYPE_CUSTOM) {
+        if (builder.type == TYPE_CUSTOM && builder.customResId != 0) {
             ivState.setImageResource(builder.customResId);
         }
     }
@@ -137,17 +140,16 @@ public class TipsDialog extends BaseLazyPopupWindow {
         setBackPressEnable(false);
         setOutSideTouchable(false);
         setOutSideDismiss(false);
+        setPopupGravity(Gravity.CENTER);
+
         if (handler == null) {
             handler = new Handler();
         }
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (isShowing()) {
-                    dismiss();
-                }
-            }
-        }, duration);
+        if (handler.hasCallbacks(dismissRunnable)) {
+            handler.removeCallbacks(dismissRunnable);
+            dismissWithOutAnimate();
+        }
+        handler.postDelayed(dismissRunnable, duration);
     }
 
     public static class Builder {

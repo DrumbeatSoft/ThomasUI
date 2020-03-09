@@ -31,8 +31,6 @@ public class MessageDialog extends BaseLazyPopupWindow {
 
     private MessageDialog(Context context, Builder builder) {
         this(context);
-        setPopupGravity(Gravity.CENTER);
-        setClipChildren(false);
         this.builder = builder;
         if (ScreenHelper.isLandscape(context)) {
             //横屏
@@ -112,6 +110,12 @@ public class MessageDialog extends BaseLazyPopupWindow {
         return getDefaultScaleAnimation(false);
     }
 
+    @Override
+    public void showPopupWindow() {
+        super.showPopupWindow();
+        setPopupGravity(Gravity.CENTER);
+        setClipChildren(false);
+    }
 
     public static class Builder {
         private Context context;

@@ -42,8 +42,6 @@ public class DateDialog extends BaseLazyPopupWindow {
 
     private DateDialog(Context context, Builder builder) {
         this(context);
-        setPopupGravity(Gravity.CENTER);
-        setClipChildren(false);
         this.builder = builder;
 
         if (ScreenHelper.isLandscape(context)) {
@@ -195,6 +193,13 @@ public class DateDialog extends BaseLazyPopupWindow {
         return getDefaultScaleAnimation(false);
     }
 
+
+    @Override
+    public void showPopupWindow() {
+        super.showPopupWindow();
+        setClipChildren(false);
+        setPopupGravity(Gravity.CENTER);
+    }
 
     public static class Builder {
         private Context context;

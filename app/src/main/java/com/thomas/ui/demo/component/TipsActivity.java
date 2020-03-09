@@ -1,6 +1,7 @@
 package com.thomas.ui.demo.component;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -72,7 +73,7 @@ public class TipsActivity extends DemoActivity {
         datas.add("弹出自定义状态框(只有图片)");
 
         adapter = new ItemAdapter(datas);
-        rvTips.setLayoutManager(new GridLayoutManager(mActivity,2));
+        rvTips.setLayoutManager(new GridLayoutManager(mActivity, 2));
         rvTips.setAdapter(adapter);
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -106,6 +107,12 @@ public class TipsActivity extends DemoActivity {
                 }
                 if (position == 9) {
                     ThomasTips.showCustom(mActivity, R.mipmap.ic_launcher);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            ThomasTips.showWarn(mActivity);
+                        }
+                    }, 200);
                 }
             }
         });

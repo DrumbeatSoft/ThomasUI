@@ -14,7 +14,6 @@ import static com.thomas.ui.dialog.TipsDialog.TYPE_WARN;
 
 public class ThomasTips {
 
-
     /**
      * 显示完成状态弹窗
      */
@@ -74,6 +73,7 @@ public class ThomasTips {
 
     /**
      * 显示自定义弹窗
+     *
      * @param context
      * @param resId
      */
@@ -83,6 +83,7 @@ public class ThomasTips {
 
     /**
      * 显示自定义弹窗
+     *
      * @param context
      * @param resId
      * @param msg
@@ -91,6 +92,17 @@ public class ThomasTips {
         showTips(context, TYPE_CUSTOM, resId, msg);
     }
 
+
+    /**
+     * 显示状态弹窗，带自定义文字
+     *
+     * @param context
+     * @param type
+     * @param msg
+     */
+    private static void showTips(Context context, int type, String msg) {
+        showTips(context, type, 0, msg);
+    }
 
 
     /**
@@ -103,19 +115,6 @@ public class ThomasTips {
     private static void showTips(Context context, int type, @DrawableRes int resId, String msg) {
         TipsDialog.Builder builder = new TipsDialog.Builder(context);
         builder.setType(type).setMessage(msg).setCustomResources(resId).build().showPopupWindow();
-
-    }
-
-    /**
-     * 显示状态弹窗，带自定义文字
-     *
-     * @param context
-     * @param type
-     * @param msg
-     */
-    private static void showTips(Context context, int type, String msg) {
-        TipsDialog.Builder builder = new TipsDialog.Builder(context);
-        builder.setType(type).setMessage(msg).build().showPopupWindow();
 
     }
 }
