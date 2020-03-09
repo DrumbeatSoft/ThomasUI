@@ -159,7 +159,6 @@ public class TipsDialog extends BaseLazyPopupWindow {
         private String message;
         private int customResId;
 
-
         public Builder(Context context) {
             this.context = context;
         }

@@ -35,8 +35,6 @@ public class BottomListDialog extends BaseLazyPopupWindow {
     private BottomListDialog(Context context, Builder builder) {
         this(context);
         this.builder = builder;
-        setAlignBackground(false);
-        setClipChildren(false);
 
         if (ScreenHelper.isLandscape(context)) {
             //横屏
@@ -54,6 +52,8 @@ public class BottomListDialog extends BaseLazyPopupWindow {
     @Override
     public void showPopupWindow() {
         super.showPopupWindow();
+        setAlignBackground(false);
+        setClipChildren(false);
         setPopupGravity(Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL);
     }
 

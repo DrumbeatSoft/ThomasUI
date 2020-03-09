@@ -3,9 +3,12 @@ package com.thomas.ui;
 import android.content.Context;
 import android.view.Gravity;
 
+import com.thomas.ui.dialog.BottomDateDialog;
 import com.thomas.ui.dialog.BottomListDialog;
+import com.thomas.ui.dialog.OnDateClickListener;
 import com.thomas.ui.dialog.OnSingleClickListener;
 
+import java.util.Date;
 import java.util.List;
 
 public class ThomasBottomSheet {
@@ -135,6 +138,36 @@ public class ThomasBottomSheet {
     private static void showBottomSheet(Context context, int gravity, String title, String cancel, boolean showCancel, List datas, OnSingleClickListener onSingleClickListener) {
         BottomListDialog.Builder builder = new BottomListDialog.Builder(context);
         builder.setTitle(title).setCancel(cancel).setGravity(gravity).setShowCancel(showCancel).setItems(datas).setOnItemClickListener(onSingleClickListener).build().showPopupWindow();
+    }
+
+
+    /**
+     * 展示一个不带标题的底部时间选择弹窗
+     * @param context
+     * @param startYear
+     * @param endYear
+     * @param selectDate
+     * @param hasDay
+     * @param onDateClickListener
+     */
+    public static void showBottomDate(Context context, int startYear, int endYear, Date selectDate, boolean hasDay, OnDateClickListener onDateClickListener) {
+        showBottomDate(context, "", startYear, endYear, selectDate, hasDay, onDateClickListener);
+    }
+
+    /**
+     * 展示一个带标题的底部时间选择弹窗
+     * @param context
+     * @param title
+     * @param startYear
+     * @param endYear
+     * @param selectDate
+     * @param hasDay
+     * @param onDateClickListener
+     */
+    public static void showBottomDate(Context context, String title, int startYear, int endYear, Date selectDate, boolean hasDay, OnDateClickListener onDateClickListener) {
+        BottomDateDialog.Builder builder = new BottomDateDialog.Builder(context);
+        builder.setTitle(title).setStartYear(startYear).setEndYear(endYear).setSelectedDate(selectDate)
+                .supportDay(hasDay).setOnDateClickListener(onDateClickListener).build().showPopupWindow();
     }
 
 

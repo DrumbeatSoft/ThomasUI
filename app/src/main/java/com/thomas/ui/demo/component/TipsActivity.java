@@ -62,15 +62,16 @@ public class TipsActivity extends DemoActivity {
         });
 
         datas.add("弹出完成状态框");
-        datas.add("弹出完成状态框(自定义文字)");
+        datas.add("弹出完成状态框\n(自定义文字)");
         datas.add("弹出错误状态框");
-        datas.add("弹出错误状态框(自定义文字)");
+        datas.add("弹出错误状态框\n(自定义文字)");
         datas.add("弹出警告状态框");
-        datas.add("弹出警告状态框(自定义文字)");
+        datas.add("弹出警告状态框\n(自定义文字)");
         datas.add("弹出加载状态框");
-        datas.add("弹出加载状态框(自定义文字)");
+        datas.add("弹出加载状态框\n(自定义文字)");
         datas.add("弹出自定义状态框");
-        datas.add("弹出自定义状态框(只有图片)");
+        datas.add("弹出自定义状态框\n(只有图片)");
+        datas.add("弹出多个状态框");
 
         adapter = new ItemAdapter(datas);
         rvTips.setLayoutManager(new GridLayoutManager(mActivity, 2));
@@ -107,12 +108,15 @@ public class TipsActivity extends DemoActivity {
                 }
                 if (position == 9) {
                     ThomasTips.showCustom(mActivity, R.mipmap.ic_launcher);
+                }
+                if (position==10){
+                    ThomasTips.showLoading(mActivity, "自定义文字");
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             ThomasTips.showWarn(mActivity);
                         }
-                    }, 200);
+                    }, 500);
                 }
             }
         });

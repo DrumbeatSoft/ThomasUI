@@ -104,8 +104,8 @@ public class DialogActivity extends DemoActivity {
                 if (position == 2) {
                     ThomasDialog.showTips(mActivity,
                             "提示弹窗，沒有标题，内容显示居右，有两个按钮，可以自定义按钮的文字和响应事件",
-                            "自定义文字(确定)", () -> ToastUtils.showShort("响应了确定按钮的点击事件"),
-                            "自定义文字(取消)", () -> ToastUtils.showShort("响应了取消按钮的点击事件"));
+                            "自定义文字\n(确定)", () -> ToastUtils.showShort("响应了确定按钮的点击事件"),
+                            "自定义文字\n(取消)", () -> ToastUtils.showShort("响应了取消按钮的点击事件"));
                 }
 
                 if (position == 3) {
@@ -118,8 +118,8 @@ public class DialogActivity extends DemoActivity {
                 }
                 if (position == 5) {
                     ThomasDialog.showMessage(mActivity, "我是消息弹窗的标题", "我是消息弹窗的内容",
-                            "自定义按钮(确定)", () -> ToastUtils.showShort("响应了确定按钮的点击事件"),
-                            "自定义文字(取消)", () -> ToastUtils.showShort("响应了取消按钮的点击事件"));
+                            "自定义按钮\n(确定)", () -> ToastUtils.showShort("响应了确定按钮的点击事件"),
+                            "自定义文字\n(取消)", () -> ToastUtils.showShort("响应了取消按钮的点击事件"));
                 }
 
                 if (position == 6) {
@@ -129,8 +129,8 @@ public class DialogActivity extends DemoActivity {
 
                 if (position == 7) {
                     ThomasDialog.showMessage(mActivity, "我是消息弹窗的标题", "我是很长的消息弹窗的内容，我是很长的消息弹窗的内容，我是很长的消息弹窗的内容，我是很长的消息弹窗的内容，我是很长的消息弹窗的内容，我是很长的消息弹窗的内容，我是很长的消息弹窗的内容，我是很长的消息弹窗的内容，我是很长的消息弹窗的内容，我是很长的消息弹窗的内容，我是很长的消息弹窗的内容，我是很长的消息弹窗的内容，我是很长的消息弹窗的内容，我是很长的消息弹窗的内容，我是很长的消息弹窗的内容。",
-                            "自定义按钮(确定)", () -> ToastUtils.showShort("响应了确定按钮的点击事件"),
-                            "自定义文字(取消)", () -> ToastUtils.showShort("响应了取消按钮的点击事件"));
+                            "自定义按钮\n(确定)", () -> ToastUtils.showShort("响应了确定按钮的点击事件"),
+                            "自定义文字\n(取消)", () -> ToastUtils.showShort("响应了取消按钮的点击事件"));
                 }
                 if (position == 9) {
                     ThomasDialog.showMenu(mActivity, lessDatas, new OnSingleClickListener() {

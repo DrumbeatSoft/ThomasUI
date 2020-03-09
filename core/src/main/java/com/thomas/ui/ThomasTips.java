@@ -115,6 +115,5 @@ public class ThomasTips {
     private static void showTips(Context context, int type, @DrawableRes int resId, String msg) {
         TipsDialog.Builder builder = new TipsDialog.Builder(context);
         builder.setType(type).setMessage(msg).setCustomResources(resId).build().showPopupWindow();
-
     }
 }
