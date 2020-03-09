@@ -6,10 +6,18 @@ public class MenuBean extends AbsKV {
 
     private String name;
     private String id;
+    private int resId;
 
     public MenuBean(String name, String id) {
         this.name = name;
         this.id = id;
+        this.resId = 0;
+    }
+
+    public MenuBean(String name, String id, int resId) {
+        this.name = name;
+        this.id = id;
+        this.resId = resId;
     }
 
     public String getName() {
@@ -28,6 +36,10 @@ public class MenuBean extends AbsKV {
         this.id = id;
     }
 
+    public void setResId(int resId) {
+        this.resId = resId;
+    }
+
     @Override
     protected String getKey() {
         return name;
@@ -36,5 +48,10 @@ public class MenuBean extends AbsKV {
     @Override
     protected String getValue() {
         return id;
+    }
+
+    @Override
+    protected int getResId() {
+        return resId;
     }
 }

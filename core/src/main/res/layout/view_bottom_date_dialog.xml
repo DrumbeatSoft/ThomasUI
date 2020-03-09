@@ -22,9 +22,9 @@
             android:gravity="center"
             android:maxLines="1"
             android:paddingStart="@dimen/thomasLargePadding"
-            android:paddingTop="@dimen/thomasSmallPadding"
+            android:paddingTop="@dimen/thomasNormalPadding"
             android:paddingEnd="@dimen/thomasLargePadding"
-            android:paddingBottom="@dimen/thomasSmallPadding"
+            android:paddingBottom="@dimen/thomasNormalPadding"
             android:textColor="@color/thomasButtonTextColor"
             android:textSize="@dimen/thomasButtonSize"
             tools:text="取消" />
@@ -49,9 +49,9 @@
             android:gravity="center"
             android:maxLines="1"
             android:paddingStart="@dimen/thomasLargePadding"
-            android:paddingTop="@dimen/thomasSmallPadding"
+            android:paddingTop="@dimen/thomasNormalPadding"
             android:paddingEnd="@dimen/thomasLargePadding"
-            android:paddingBottom="@dimen/thomasSmallPadding"
+            android:paddingBottom="@dimen/thomasNormalPadding"
             android:textColor="@color/thomasButtonTextColor"
             android:textSize="@dimen/thomasButtonSize"
             tools:text="确定" />

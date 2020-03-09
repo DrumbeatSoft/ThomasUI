@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/thomas_r8_selector"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/thomasSmallPadding">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/thomas_iv_item_res"
+        android:layout_width="64dp"
+        android:layout_height="64dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/thomas_tv_item_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="middle"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textSize="@dimen/thomasSmallSize"
+        tools:text="选项一" />
+</androidx.appcompat.widget.LinearLayoutCompat>

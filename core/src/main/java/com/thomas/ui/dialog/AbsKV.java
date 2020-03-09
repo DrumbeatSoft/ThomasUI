@@ -1,6 +1,7 @@
 package com.thomas.ui.dialog;
 
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 
 public abstract class AbsKV implements Cloneable {
@@ -10,6 +11,8 @@ public abstract class AbsKV implements Cloneable {
     protected abstract String getKey();
 
     protected abstract String getValue();
+
+    protected abstract @DrawableRes int getResId();
 
     void setChoice(boolean isChoice) {
         this.isChoice = isChoice;

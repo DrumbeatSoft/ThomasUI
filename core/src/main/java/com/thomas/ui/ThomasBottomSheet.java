@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.Gravity;
 
 import com.thomas.ui.dialog.BottomDateDialog;
+import com.thomas.ui.dialog.BottomGridDialog;
 import com.thomas.ui.dialog.BottomListDialog;
 import com.thomas.ui.dialog.OnDateClickListener;
 import com.thomas.ui.dialog.OnSingleClickListener;
@@ -143,6 +144,7 @@ public class ThomasBottomSheet {
 
     /**
      * 展示一个不带标题的底部时间选择弹窗
+     *
      * @param context
      * @param startYear
      * @param endYear
@@ -156,6 +158,7 @@ public class ThomasBottomSheet {
 
     /**
      * 展示一个带标题的底部时间选择弹窗
+     *
      * @param context
      * @param title
      * @param startYear
@@ -170,5 +173,53 @@ public class ThomasBottomSheet {
                 .supportDay(hasDay).setOnDateClickListener(onDateClickListener).build().showPopupWindow();
     }
 
+    /**
+     * 展示一个底部宫格弹窗
+     * @param context
+     * @param datas
+     * @param onSingleClickListener
+     */
+    public static void showBottomGridNormal(Context context, List datas, OnSingleClickListener onSingleClickListener) {
+        showBottomGrid(context, "", "", false, datas, onSingleClickListener);
+    }
+
+    /**
+     * 展示一个带取消的底部宫格弹窗
+     * @param context
+     * @param cancel
+     * @param datas
+     * @param onSingleClickListener
+     */
+    public static void showBottomGridWithCancel(Context context, String cancel, List datas, OnSingleClickListener onSingleClickListener) {
+        showBottomGrid(context, "", cancel, true, datas, onSingleClickListener);
+    }
+
+    /**
+     * 展示一个带标题的底部宫格弹窗
+     * @param context
+     * @param title
+     * @param datas
+     * @param onSingleClickListener
+     */
+    public static void showBottomGridWithTitle(Context context, String title, List datas, OnSingleClickListener onSingleClickListener) {
+        showBottomGrid(context, title, "", false, datas, onSingleClickListener);
+    }
+
+    /**
+     * 展示一个带标题和取消的底部宫格弹窗
+     * @param context
+     * @param title
+     * @param cancel
+     * @param datas
+     * @param onSingleClickListener
+     */
+    public static void showBottomGridAll(Context context, String title, String cancel, List datas, OnSingleClickListener onSingleClickListener) {
+        showBottomGrid(context, title, cancel, true, datas, onSingleClickListener);
+    }
+
+    private static void showBottomGrid(Context context, String title, String cancel, boolean showCancel, List datas, OnSingleClickListener onSingleClickListener) {
+        BottomGridDialog.Builder builder = new BottomGridDialog.Builder(context);
+        builder.setTitle(title).setCancel(cancel).setShowCancel(showCancel).setItems(datas).setOnItemClickListener(onSingleClickListener).build().showPopupWindow();
+    }
 
 }
