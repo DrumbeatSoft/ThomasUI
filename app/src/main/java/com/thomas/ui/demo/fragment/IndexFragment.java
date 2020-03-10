@@ -9,6 +9,8 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.thomas.core.utils.ActivityUtils;
 import com.thomas.core.utils.ColorUtils;
+import com.thomas.ui.badge.Badge;
+import com.thomas.ui.badge.BadgeView;
 import com.thomas.ui.demo.R;
 import com.thomas.ui.demo.base.DemoLazyFragment;
 import com.thomas.ui.demo.component.BottomSheetActivity;
@@ -29,6 +31,8 @@ public class IndexFragment extends DemoLazyFragment {
     @BindView(R.id.btn_bottom_sheet)
     AppCompatButton btnBottomSheet;
 
+    BadgeView badgeView;
+
     public static IndexFragment newInstance() {
         IndexFragment fragment = new IndexFragment();
         return fragment;
@@ -45,7 +49,29 @@ public class IndexFragment extends DemoLazyFragment {
 
     @Override
     public void initView(@Nullable Bundle savedInstanceState, @Nullable View contentView) {
-        applyThomasClickListener(btnTitleBar, btnDialog, btnTips,btnBottomSheet);
+        applyThomasClickListener(btnTitleBar, btnDialog, btnTips, btnBottomSheet);
+
+
+        badgeView = new BadgeView(mActivity);
+        badgeView.bindTarget(btnDialog).setBadgeNumber(9).setOnDragStateChangedListener(new Badge.OnDragStateChangedListener() {
+            @Override
+            public void onDragStateChanged(int dragState, Badge badge, View targetView) {
+                switch (dragState) {
+                    case STATE_START:
+                        break;
+                    case STATE_DRAGGING:
+                        break;
+                    case STATE_DRAGGING_OUT_OF_RANGE:
+                        break;
+                    case STATE_SUCCEED:
+                        badge.hide(true);
+                        break;
+                    case STATE_CANCELED:
+                        break;
+                }
+            }
+        });
+
     }
 
     @Override
@@ -59,6 +85,7 @@ public class IndexFragment extends DemoLazyFragment {
             ActivityUtils.startActivity(TitleBarActivity.class);
         }
         if (view == btnDialog) {
+            badgeView.hide(true);
             ActivityUtils.startActivity(DialogActivity.class);
         }
         if (view == btnTips) {

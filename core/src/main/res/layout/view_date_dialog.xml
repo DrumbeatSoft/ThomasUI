@@ -57,8 +57,7 @@
         android:layout_height="@dimen/thomasDividerHeight"
         android:layout_marginLeft="@dimen/thomasNormalMargin"
         android:layout_marginRight="@dimen/thomasNormalMargin"
-        android:background="@color/thomasDividerColor"
-        android:visibility="invisible" />
+        android:background="@color/thomasDividerColor" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
