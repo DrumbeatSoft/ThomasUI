@@ -9,7 +9,6 @@
 
     <dimen name="thomasDividerHeight">0.5dp</dimen>
     <dimen name="thomasDividerWidth">0.5dp</dimen>
-
     <dimen name="thomasTitleSize">16sp</dimen>
     <dimen name="thomasContentSize">14sp</dimen>
     <dimen name="thomasButtonSize">14sp</dimen>

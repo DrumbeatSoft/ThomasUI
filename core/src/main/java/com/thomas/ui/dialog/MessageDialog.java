@@ -10,6 +10,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import com.thomas.ui.R;
 import com.thomas.ui.helper.ScreenHelper;
+import com.thomas.ui.listener.OnDialogClickListener;
 
 import razerdp.basepopup.BaseLazyPopupWindow;
 
@@ -62,6 +63,10 @@ public class MessageDialog extends BaseLazyPopupWindow {
         if (builder.dialogType == TYPE_ONLY_ONE_BUTTON) {
             tvDialogCancel.setVisibility(View.GONE);
             viewDialogDivider.setVisibility(View.GONE);
+            tvDialogOk.setBackgroundResource(R.drawable.thomas_r8_bottom_selector);
+        } else {
+            tvDialogOk.setBackgroundResource(R.drawable.thomas_r8_bottom_right_selector);
+            tvDialogCancel.setBackgroundResource(R.drawable.thomas_r8_bottom_left_selector);
         }
 
         if (TextUtils.isEmpty(builder.title)) {

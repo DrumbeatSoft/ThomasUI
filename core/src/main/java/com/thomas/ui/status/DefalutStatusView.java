@@ -11,10 +11,10 @@ import androidx.appcompat.widget.LinearLayoutCompat;
 
 import com.thomas.ui.R;
 
-import static com.thomas.ui.status.TLoading.STATUS_EMPTY_DATA;
-import static com.thomas.ui.status.TLoading.STATUS_LOADING;
-import static com.thomas.ui.status.TLoading.STATUS_LOAD_FAILED;
-import static com.thomas.ui.status.TLoading.STATUS_LOAD_SUCCESS;
+import static com.thomas.ui.status.Gloading.STATUS_EMPTY_DATA;
+import static com.thomas.ui.status.Gloading.STATUS_LOADING;
+import static com.thomas.ui.status.Gloading.STATUS_LOAD_FAILED;
+import static com.thomas.ui.status.Gloading.STATUS_LOAD_SUCCESS;
 
 public class DefalutStatusView extends LinearLayoutCompat implements View.OnClickListener {
 

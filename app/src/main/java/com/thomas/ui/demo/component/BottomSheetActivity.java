@@ -22,8 +22,8 @@ import com.thomas.ui.demo.R;
 import com.thomas.ui.demo.adapter.ItemAdapter;
 import com.thomas.ui.demo.base.DemoActivity;
 import com.thomas.ui.demo.entity.MenuBean;
-import com.thomas.ui.dialog.OnDateClickListener;
-import com.thomas.ui.dialog.OnSingleClickListener;
+import com.thomas.ui.listener.OnDateClickListener;
+import com.thomas.ui.listener.OnSingleClickListener;
 
 import java.util.ArrayList;
 import java.util.Date;

@@ -11,13 +11,13 @@ import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 
-public class TLoading {
+public class Gloading {
     public static final int STATUS_LOADING = 1;
     public static final int STATUS_LOAD_SUCCESS = 2;
     public static final int STATUS_LOAD_FAILED = 3;
     public static final int STATUS_EMPTY_DATA = 4;
 
-    private static volatile TLoading mDefault;
+    private static volatile Gloading mDefault;
     private Adapter mAdapter;
     private static boolean DEBUG = false;
 
@@ -44,28 +44,28 @@ public class TLoading {
         DEBUG = debug;
     }
 
-    private TLoading() { }
+    private Gloading() { }
 
     /**
-     * Create a new TLoading different from the default one
+     * Create a new Gloading different from the default one
      * @param adapter another adapter different from the default one
-     * @return TLoading
+     * @return Gloading
      */
-    public static TLoading from(Adapter adapter) {
-        TLoading tLoading = new TLoading();
-        tLoading.mAdapter = adapter;
-        return tLoading;
+    public static Gloading from(Adapter adapter) {
+        Gloading gloading = new Gloading();
+        gloading.mAdapter = adapter;
+        return gloading;
     }
 
     /**
-     * get default TLoading object for global usage in whole app
-     * @return default TLoading object
+     * get default Gloading object for global usage in whole app
+     * @return default Gloading object
      */
-    public static TLoading getDefault() {
+    public static Gloading getDefault() {
         if (mDefault == null) {
-            synchronized (TLoading.class) {
+            synchronized (Gloading.class) {
                 if (mDefault == null) {
-                    mDefault = new TLoading();
+                    mDefault = new Gloading();
                 }
             }
         }
@@ -81,10 +81,10 @@ public class TLoading {
     }
 
     /**
-     * TLoading(loading status view) wrap the whole activity
+     * Gloading(loading status view) wrap the whole activity
      * wrapper is android.R.id.content
      * @param activity current activity object
-     * @return holder of TLoading
+     * @return holder of Gloading
      */
     public Holder wrap(Activity activity) {
         ViewGroup wrapper = activity.findViewById(android.R.id.content);
@@ -92,7 +92,7 @@ public class TLoading {
     }
 
     /**
-     * TLoading(loading status view) wrap the specific view.
+     * Gloading(loading status view) wrap the specific view.
      * @param view view to be wrapped
      * @return Holder
      */
@@ -122,7 +122,7 @@ public class TLoading {
     public Holder cover(View view) {
         ViewParent parent = view.getParent();
         if (parent == null) {
-            throw new RuntimeException("view has no parent to show TLoading as cover!");
+            throw new RuntimeException("view has no parent to show gloading as cover!");
         }
         ViewGroup viewGroup = (ViewGroup) parent;
         FrameLayout wrapper = new FrameLayout(view.getContext());
@@ -131,8 +131,8 @@ public class TLoading {
     }
 
     /**
-     * TLoading holder<br>
-     * create by {@link TLoading#wrap(Activity)} or {@link TLoading#wrap(View)}<br>
+     * Gloading holder<br>
+     * create by {@link Gloading#wrap(Activity)} or {@link Gloading#wrap(View)}<br>
      * the core API for showing all status view
      */
     public static class Holder {
@@ -242,7 +242,7 @@ public class TLoading {
 
         private boolean validate() {
             if (mAdapter == null) {
-                printLog("TLoading.Adapter is not specified.");
+                printLog("Gloading.Adapter is not specified.");
             }
             if (mContext == null) {
                 printLog("Context is null.");
@@ -259,7 +259,7 @@ public class TLoading {
 
         /**
          * get wrapper
-         * @return container of TLoading
+         * @return container of gloading
          */
         public ViewGroup getWrapper() {
             return mWrapper;
@@ -293,7 +293,7 @@ public class TLoading {
 
     private static void printLog(String msg) {
         if (DEBUG) {
-            Log.e("TLoading", msg);
+            Log.e("Gloading", msg);
         }
     }
 }

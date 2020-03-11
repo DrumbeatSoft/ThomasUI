@@ -15,7 +15,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.thomas.ui.R;
+import com.thomas.ui.helper.RecyclerViewHelper;
 import com.thomas.ui.helper.ScreenHelper;
+import com.thomas.ui.listener.OnSingleClickListener;
 
 import java.util.List;
 
@@ -97,7 +99,8 @@ public class BottomListDialog extends BaseLazyPopupWindow {
         DialogMenuAdapter adapter = new DialogMenuAdapter(builder.gravity);
 
         rvDialogContent.setAdapter(adapter);
-        rvDialogContent.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvDialogContent.setLayoutManager(RecyclerViewHelper.getDefaultLayoutManager(getContext()));
+        rvDialogContent.addItemDecoration(RecyclerViewHelper.getDefaultItemDecoration(getContext()));
         adapter.setNewData(builder.items);
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override

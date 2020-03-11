@@ -5,10 +5,10 @@ import android.content.Context;
 import com.thomas.ui.dialog.DateDialog;
 import com.thomas.ui.dialog.MenuDialog;
 import com.thomas.ui.dialog.MessageDialog;
-import com.thomas.ui.dialog.OnDateClickListener;
-import com.thomas.ui.dialog.OnDialogClickListener;
-import com.thomas.ui.dialog.OnMultipleClickListener;
-import com.thomas.ui.dialog.OnSingleClickListener;
+import com.thomas.ui.listener.OnDateClickListener;
+import com.thomas.ui.listener.OnDialogClickListener;
+import com.thomas.ui.listener.OnMultipleClickListener;
+import com.thomas.ui.listener.OnSingleClickListener;
 
 import java.util.Calendar;
 import java.util.Date;

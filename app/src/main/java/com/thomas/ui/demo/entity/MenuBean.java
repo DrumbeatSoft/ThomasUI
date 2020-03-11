@@ -41,12 +41,12 @@ public class MenuBean extends AbsKV {
     }
 
     @Override
-    protected String getKey() {
+    public String getKey() {
         return name;
     }
 
     @Override
-    protected String getValue() {
+    public String getValue() {
         return id;
     }
 

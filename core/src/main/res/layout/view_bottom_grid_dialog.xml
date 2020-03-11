@@ -21,8 +21,6 @@
         android:id="@+id/thomas_divider_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/thomasDividerHeight"
-        android:layout_marginLeft="@dimen/thomasNormalMargin"
-        android:layout_marginRight="@dimen/thomasNormalMargin"
         android:background="@color/thomasDividerColor"
         android:visibility="invisible" />
 
@@ -32,10 +30,6 @@
         android:layout_height="0dp"
         android:layout_gravity="center"
         android:layout_weight="1"
-        android:paddingStart="@dimen/thomasNormalPadding"
-        android:paddingTop="@dimen/thomasSmallPadding"
-        android:paddingEnd="@dimen/thomasNormalPadding"
-        android:paddingBottom="@dimen/thomasSmallPadding"
         tools:itemCount="9"
         tools:listitem="@layout/item_view_menu_bottom" />
 
@@ -43,8 +37,6 @@
         android:id="@+id/thomas_divider_cancel"
         android:layout_width="match_parent"
         android:layout_height="@dimen/thomasDividerHeight"
-        android:layout_marginLeft="@dimen/thomasNormalMargin"
-        android:layout_marginRight="@dimen/thomasNormalMargin"
         android:background="@color/thomasDividerColor"
         android:visibility="invisible" />
 
@@ -52,8 +44,7 @@
         android:id="@+id/thomas_btn_cancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-0.5dp"
-        android:background="@drawable/thomas_r8_selector"
+        android:background="@drawable/thomas_r8_bottom_selector"
         android:gravity="center"
         android:padding="@dimen/thomasNormalPadding"
         android:textColor="@color/thomasButtonTextColor"

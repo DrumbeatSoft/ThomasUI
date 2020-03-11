@@ -6,8 +6,8 @@ import android.view.Gravity;
 import com.thomas.ui.dialog.BottomDateDialog;
 import com.thomas.ui.dialog.BottomGridDialog;
 import com.thomas.ui.dialog.BottomListDialog;
-import com.thomas.ui.dialog.OnDateClickListener;
-import com.thomas.ui.dialog.OnSingleClickListener;
+import com.thomas.ui.listener.OnDateClickListener;
+import com.thomas.ui.listener.OnSingleClickListener;
 
 import java.util.Date;
 import java.util.List;

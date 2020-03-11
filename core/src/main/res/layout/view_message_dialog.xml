@@ -23,7 +23,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:padding="@dimen/thomasNormalPadding">
+        android:paddingTop="@dimen/thomasNormalPadding"
+        android:paddingBottom="@dimen/thomasNormalPadding">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/thomas_tv_content"
@@ -32,6 +33,8 @@
             android:gravity="center"
             android:lineSpacingExtra="3dp"
             android:lineSpacingMultiplier="1.2"
+            android:paddingStart="@dimen/thomasNormalPadding"
+            android:paddingEnd="@dimen/thomasNormalPadding"
             android:textColor="@color/thomasContentTextColor"
             android:textSize="@dimen/thomasContentSize"
             tools:text="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容" />
@@ -42,14 +45,11 @@
         android:id="@+id/thomas_divider_horizontal"
         android:layout_width="match_parent"
         android:layout_height="@dimen/thomasDividerHeight"
-        android:layout_marginLeft="@dimen/thomasNormalMargin"
-        android:layout_marginRight="@dimen/thomasNormalMargin"
         android:background="@color/thomasDividerColor" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-0.5dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -58,7 +58,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/thomas_r8_selector"
+            android:background="@drawable/thomas_r8_bottom_left_selector"
             android:gravity="center"
             android:maxLines="1"
             android:paddingStart="@dimen/thomasSmallPadding"
@@ -72,9 +72,7 @@
         <View
             android:id="@+id/thomas_divider_vertical"
             android:layout_width="@dimen/thomasDividerWidth"
-            android:layout_height="16dp"
-            android:layout_marginStart="@dimen/thomasSmallMargin"
-            android:layout_marginEnd="@dimen/thomasSmallMargin"
+            android:layout_height="match_parent"
             android:background="@color/thomasDividerColor" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -82,7 +80,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/thomas_r8_selector"
+            android:background="@drawable/thomas_r8_bottom_right_selector"
             android:gravity="center"
             android:maxLines="1"
             android:paddingStart="@dimen/thomasSmallPadding"

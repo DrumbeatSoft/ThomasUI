@@ -2,9 +2,9 @@ package com.thomas.ui.status;
 
 import android.view.View;
 
-public class DefaultStatusAdapter implements TLoading.Adapter {
+public class DefaultStatusAdapter implements Gloading.Adapter {
     @Override
-    public View getView(TLoading.Holder holder, View convertView, int status) {
+    public View getView(Gloading.Holder holder, View convertView, int status) {
         DefalutStatusView loadingStatusView = null;
         //reuse the old view, if possible
         if (convertView != null && convertView instanceof DefalutStatusView) {

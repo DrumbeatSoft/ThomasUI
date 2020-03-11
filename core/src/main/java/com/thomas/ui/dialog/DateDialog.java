@@ -12,6 +12,7 @@ import com.thomas.ui.R;
 import com.thomas.ui.date.DateType;
 import com.thomas.ui.date.WheelView;
 import com.thomas.ui.helper.ScreenHelper;
+import com.thomas.ui.listener.OnDateClickListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -27,6 +28,7 @@ public class DateDialog extends BaseLazyPopupWindow {
 
     private WheelView wvDay, wvYear, wvMonth;
 
+    private View viewDialogDivider;
 
     private int mCurrentYear;
     private int mCurrentMonth;
@@ -46,7 +48,7 @@ public class DateDialog extends BaseLazyPopupWindow {
 
         if (ScreenHelper.isLandscape(context)) {
             //横屏
-            setMaxHeight( ScreenHelper.getScreenHeight(context)/ 2);
+            setMaxHeight(ScreenHelper.getScreenHeight(context) / 2);
             setMaxWidth(ScreenHelper.getScreenWidth(context) / 3);
             setMinWidth(ScreenHelper.getScreenWidth(context) / 3);
             setMinHeight(ScreenHelper.getScreenHeight(context) / 4);
@@ -65,13 +67,14 @@ public class DateDialog extends BaseLazyPopupWindow {
         tvDialogTitle = findViewById(R.id.thomas_tv_title);
         tvDialogCancel = findViewById(R.id.thomas_btn_cancel);
         tvDialogOk = findViewById(R.id.thomas_btn_ok);
-
+        viewDialogDivider = findViewById(R.id.thomas_divider_horizontal);
         wvYear = findViewById(R.id.mpvDialogYear);
         wvMonth = findViewById(R.id.mpvDialogMonth);
         wvDay = findViewById(R.id.mpvDialogDay);
 
         if (TextUtils.isEmpty(builder.title)) {
             tvDialogTitle.setVisibility(View.GONE);
+            viewDialogDivider.setVisibility(View.GONE);
         } else {
             tvDialogTitle.setVisibility(View.VISIBLE);
             tvDialogTitle.setText(builder.title);

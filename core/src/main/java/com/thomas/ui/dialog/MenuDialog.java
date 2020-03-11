@@ -8,6 +8,7 @@ import android.view.animation.Animation;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,7 +16,10 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.thomas.ui.R;
+import com.thomas.ui.helper.RecyclerViewHelper;
 import com.thomas.ui.helper.ScreenHelper;
+import com.thomas.ui.listener.OnMultipleClickListener;
+import com.thomas.ui.listener.OnSingleClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -123,7 +127,8 @@ public class MenuDialog<T extends AbsKV> extends BaseLazyPopupWindow {
         DialogMenuAdapter adapter = new DialogMenuAdapter(builder.dialogType);
 
         rvDialogContent.setAdapter(adapter);
-        rvDialogContent.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvDialogContent.setLayoutManager(RecyclerViewHelper.getDefaultLayoutManager(getContext()));
+        rvDialogContent.addItemDecoration(RecyclerViewHelper.getDefaultItemDecoration(getContext()));
         adapter.setNewData(builder.items);
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -241,7 +246,7 @@ public class MenuDialog<T extends AbsKV> extends BaseLazyPopupWindow {
         @Override
         protected void convert(@NonNull BaseViewHolder helper, T item) {
             if (dialogType == TYPE_ONLY_MENU) {
-                helper.findView(R.id.thomas_iv_item_state).setVisibility(View.GONE);
+                helper.findView(R.id.thomas_iv_item_state).setVisibility(View.INVISIBLE);
             } else {
                 helper.findView(R.id.thomas_iv_item_state).setVisibility(View.VISIBLE);
             }
@@ -258,13 +263,18 @@ public class MenuDialog<T extends AbsKV> extends BaseLazyPopupWindow {
                 }
             }
         }
-    }
 
-    private void changeState(BaseViewHolder helper, AbsKV item, boolean isAnimate) {
-        if (item.getChoice()) {
-            helper.setImageResource(R.id.thomas_iv_item_state, R.drawable.thomas_shape_selected);
-        } else {
-            helper.setImageResource(R.id.thomas_iv_item_state, R.drawable.thomas_shape_unselected);
+
+        private void changeState(BaseViewHolder helper, AbsKV item, boolean isAnimate) {
+            if (dialogType != TYPE_ONLY_MENU) {
+                if (item.getChoice()) {
+                    helper.setImageResource(R.id.thomas_iv_item_state, R.drawable.thomas_shape_selected);
+                } else {
+                    helper.setImageResource(R.id.thomas_iv_item_state, R.drawable.thomas_shape_unselected);
+                }
+            }
         }
     }
+
+
 }

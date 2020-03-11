@@ -62,11 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        android:paddingStart="@dimen/thomasNormalPadding"
-        android:paddingTop="@dimen/thomasSmallPadding"
-        android:paddingEnd="@dimen/thomasNormalPadding"
-        android:paddingBottom="@dimen/thomasSmallPadding">
+        android:orientation="horizontal">
 
         <com.thomas.ui.date.WheelView
             android:id="@+id/mpvDialogYear"
@@ -88,6 +84,5 @@
             android:layout_weight="1" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
-
 
 </androidx.appcompat.widget.LinearLayoutCompat>

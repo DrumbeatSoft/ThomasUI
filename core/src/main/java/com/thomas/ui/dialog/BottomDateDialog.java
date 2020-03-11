@@ -1,7 +1,6 @@
 package com.thomas.ui.dialog;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
@@ -12,6 +11,7 @@ import com.thomas.ui.R;
 import com.thomas.ui.date.DateType;
 import com.thomas.ui.date.WheelView;
 import com.thomas.ui.helper.ScreenHelper;
+import com.thomas.ui.listener.OnDateClickListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;

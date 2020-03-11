@@ -15,13 +15,14 @@ import com.thomas.core.utils.TimeUtils;
 import com.thomas.core.utils.ToastUtils;
 import com.thomas.ui.ThomasDialog;
 import com.thomas.ui.ThomasTitleBar;
+import com.thomas.ui.ThomasWindow;
 import com.thomas.ui.demo.R;
 import com.thomas.ui.demo.adapter.ItemAdapter;
 import com.thomas.ui.demo.base.DemoActivity;
 import com.thomas.ui.demo.entity.MenuBean;
-import com.thomas.ui.dialog.OnDateClickListener;
-import com.thomas.ui.dialog.OnMultipleClickListener;
-import com.thomas.ui.dialog.OnSingleClickListener;
+import com.thomas.ui.listener.OnDateClickListener;
+import com.thomas.ui.listener.OnMultipleClickListener;
+import com.thomas.ui.listener.OnSingleClickListener;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -54,16 +55,22 @@ public class DialogActivity extends DemoActivity {
             }
 
             if (action == ThomasTitleBar.ACTION_RIGHT_TEXT) {
-                ThomasDialog.showTips(mActivity,
-                        "切换屏幕方向，来看一下弹窗的展示效果",
-                        "切换", () -> {
-
-                            if (ScreenUtils.isPortrait()) {
-                                ScreenUtils.setLandscape(mActivity);
-                            } else {
-                                ScreenUtils.setPortrait(mActivity);
-                            }
-                        });
+//                ThomasDialog.showTips(mActivity,
+//                        "切换屏幕方向，来看一下弹窗的展示效果",
+//                        "切换", () -> {
+//
+//                            if (ScreenUtils.isPortrait()) {
+//                                ScreenUtils.setLandscape(mActivity);
+//                            } else {
+//                                ScreenUtils.setPortrait(mActivity);
+//                            }
+//                        });
+                ThomasWindow.showMenu(thomasTitleBar.getRightTextView(), lessDatas, new OnSingleClickListener() {
+                    @Override
+                    public void onClick(int position, String key, String value) {
+                        ToastUtils.showLong("点击了第" + position + "条数据，key=" + key + ",value=" + value);
+                    }
+                });
             }
         });
 

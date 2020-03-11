@@ -8,9 +8,9 @@ public abstract class AbsKV implements Cloneable {
 
     private boolean isChoice = false;
 
-    protected abstract String getKey();
+    public abstract String getKey();
 
-    protected abstract String getValue();
+    public abstract String getValue();
 
     protected abstract @DrawableRes int getResId();
 

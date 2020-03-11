@@ -12,7 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="@dimen/thomasNormalPadding"
+        android:paddingStart="@dimen/thomasNormalPadding"
+        android:paddingTop="@dimen/thomasNormalPadding"
+        android:paddingEnd="@dimen/thomasNormalPadding"
+        android:paddingBottom="@dimen/thomasSmallPadding"
         android:textColor="@color/thomasTitleTextColor"
         android:textSize="@dimen/thomasTitleSize"
         tools:text="标题" />
@@ -21,8 +24,6 @@
         android:id="@+id/thomas_divider_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/thomasDividerHeight"
-        android:layout_marginLeft="@dimen/thomasNormalMargin"
-        android:layout_marginRight="@dimen/thomasNormalMargin"
         android:background="@color/thomasDividerColor"
         android:visibility="invisible" />
 
@@ -38,8 +39,6 @@
         android:id="@+id/thomas_divider_cancel"
         android:layout_width="match_parent"
         android:layout_height="@dimen/thomasDividerHeight"
-        android:layout_marginLeft="@dimen/thomasNormalMargin"
-        android:layout_marginRight="@dimen/thomasNormalMargin"
         android:background="@color/thomasDividerColor"
         android:visibility="invisible" />
 
@@ -47,8 +46,7 @@
         android:id="@+id/thomas_btn_cancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-0.5dp"
-        android:background="@drawable/thomas_r8_selector"
+        android:background="@drawable/thomas_r8_bottom_selector"
         android:gravity="center"
         android:padding="@dimen/thomasNormalPadding"
         android:textColor="@color/thomasButtonTextColor"

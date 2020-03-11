@@ -15,34 +15,27 @@
         android:paddingLeft="@dimen/thomasNormalPadding"
         android:paddingTop="@dimen/thomasNormalPadding"
         android:paddingRight="@dimen/thomasNormalPadding"
+        android:paddingBottom="@dimen/thomasSmallPadding"
         android:textColor="@color/thomasTitleTextColor"
         android:textSize="@dimen/thomasTitleSize"
         tools:text="标题" />
 
-    <androidx.core.widget.NestedScrollView
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/thomas_rv_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="@dimen/thomasSmallPadding">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/thomas_rv_content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </androidx.core.widget.NestedScrollView>
+        android:layout_weight="1"/>
 
     <View
         android:id="@+id/thomas_divider_horizontal"
         android:layout_width="match_parent"
         android:layout_height="@dimen/thomasDividerHeight"
-        android:layout_marginLeft="@dimen/thomasNormalMargin"
-        android:layout_marginRight="@dimen/thomasNormalMargin"
         android:background="@color/thomasDividerColor" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-0.5dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -51,7 +44,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/thomas_r8_selector"
+            android:background="@drawable/thomas_r8_bottom_left_selector"
             android:gravity="center"
             android:maxLines="1"
             android:paddingStart="@dimen/thomasSmallPadding"
@@ -65,9 +58,7 @@
         <View
             android:id="@+id/thomas_divider_vertical"
             android:layout_width="@dimen/thomasDividerWidth"
-            android:layout_height="16dp"
-            android:layout_marginStart="@dimen/thomasSmallMargin"
-            android:layout_marginEnd="@dimen/thomasSmallMargin"
+            android:layout_height="match_parent"
             android:background="@color/thomasDividerColor" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -75,7 +66,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/thomas_r8_selector"
+            android:background="@drawable/thomas_r8_bottom_right_selector"
             android:gravity="center"
             android:maxLines="1"
             android:paddingStart="@dimen/thomasSmallPadding"
@@ -86,7 +77,6 @@
             android:textSize="@dimen/thomasButtonSize"
             tools:text="确定" />
     </androidx.appcompat.widget.LinearLayoutCompat>
-
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
