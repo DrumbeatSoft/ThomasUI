@@ -8,8 +8,6 @@ import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -17,7 +15,7 @@ import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.thomas.ui.R;
 import com.thomas.ui.dialog.AbsKV;
-import com.thomas.ui.dialog.BottomListDialog;
+import com.thomas.ui.helper.RecyclerViewHelper;
 import com.thomas.ui.helper.ScreenHelper;
 import com.thomas.ui.listener.OnSingleClickListener;
 
@@ -50,7 +48,7 @@ public class MenuPopup extends BaseLazyPopupWindow {
             //竖屏
             setMaxHeight((ScreenHelper.getScreenHeight(context) / 3) * 2);
             setMaxWidth(ScreenHelper.getScreenWidth(context)/2);
-            setMinWidth(ScreenHelper.getScreenWidth(context)/3);
+            setMinWidth((ScreenHelper.getScreenWidth(context)/3)*2);
         }
     }
 
@@ -76,7 +74,8 @@ public class MenuPopup extends BaseLazyPopupWindow {
         DialogMenuAdapter adapter = new DialogMenuAdapter();
 
         rvDialogContent.setAdapter(adapter);
-        rvDialogContent.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvDialogContent.setLayoutManager(RecyclerViewHelper.getDefaultLayoutManager(getContext()));
+        rvDialogContent.addItemDecoration(RecyclerViewHelper.getDefaultItemDecoration(getContext()));
         adapter.setNewData(builder.items);
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
