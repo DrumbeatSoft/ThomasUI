@@ -10,8 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.thomas.core.utils.ToastUtils;
-import com.thomas.ui.ThomasWindow;
 import com.thomas.ui.adapter.ThomasFragmentStateAdapter;
 import com.thomas.ui.demo.R;
 import com.thomas.ui.demo.base.DemoActivity;
@@ -19,7 +17,6 @@ import com.thomas.ui.demo.entity.MenuBean;
 import com.thomas.ui.demo.fragment.FoundFragment;
 import com.thomas.ui.demo.fragment.IndexFragment;
 import com.thomas.ui.demo.fragment.MineFragment;
-import com.thomas.ui.listener.OnSingleClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,12 +72,6 @@ public class HomeActivity extends DemoActivity implements BottomNavigationView.O
                 return true;
             case R.id.home_me:
                 vpHome.setCurrentItem(2, false);
-                ThomasWindow.showMenu(mBottomNavigationView, datas, new OnSingleClickListener() {
-                    @Override
-                    public void onClick(int position, String key, String value) {
-                        ToastUtils.showLong("选择了第" + position + "条数据，key=" + key + ",value=" + value);
-                    }
-                });
                 return true;
             default:
                 break;

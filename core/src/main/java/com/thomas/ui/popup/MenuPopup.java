@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -63,22 +62,8 @@ public class MenuPopup extends BaseLazyPopupWindow {
     public void showPopupWindow(View anchorView) {
         setOffsetX(anchorView.getWidth());
         setAlignBackground(false);
-        setAutoLocatePopup(true);
         super.showPopupWindow(anchorView);
 
-    }
-
-
-    @Override
-    public void onAnchorTop() {
-        super.onAnchorTop();
-        Toast.makeText(getContext(), "onAnchorTop", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onAnchorBottom() {
-        super.onAnchorBottom();
-        Toast.makeText(getContext(), "onAnchorBottom", Toast.LENGTH_LONG).show();
     }
 
 
@@ -158,6 +143,12 @@ public class MenuPopup extends BaseLazyPopupWindow {
         @Override
         protected void convert(@NonNull BaseViewHolder helper, T item) {
             helper.setText(R.id.thomas_tv_item_name, item.getKey());
+            if (item.getResId() == 0) {
+                helper.findView(R.id.thomas_iv_item_res).setVisibility(View.GONE);
+            } else {
+                helper.findView(R.id.thomas_iv_item_res).setVisibility(View.VISIBLE);
+                helper.setImageResource(R.id.thomas_iv_item_res, item.getResId());
+            }
         }
     }
 }

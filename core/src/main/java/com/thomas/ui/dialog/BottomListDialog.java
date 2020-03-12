@@ -8,7 +8,6 @@ import android.view.animation.Animation;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -190,9 +189,7 @@ public class BottomListDialog extends BaseLazyPopupWindow {
         protected void convert(@NonNull BaseViewHolder helper, T item) {
             ((AppCompatTextView) helper.findView(R.id.thomas_tv_item_name)).setGravity(gravity);
             helper.setText(R.id.thomas_tv_item_name, item.getKey());
-            if (gravity == Gravity.CENTER) {
-                helper.findView(R.id.thomas_iv_item_res).setVisibility(View.GONE);
-            } else if (item.getResId() == 0) {
+            if (gravity == Gravity.CENTER || item.getResId() == 0) {
                 helper.findView(R.id.thomas_iv_item_res).setVisibility(View.GONE);
             } else {
                 helper.findView(R.id.thomas_iv_item_res).setVisibility(View.VISIBLE);

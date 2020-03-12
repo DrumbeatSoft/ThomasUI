@@ -18,6 +18,7 @@ import com.thomas.core.utils.ToastUtils;
 import com.thomas.ui.ThomasBottomSheet;
 import com.thomas.ui.ThomasDialog;
 import com.thomas.ui.ThomasTitleBar;
+import com.thomas.ui.ThomasWindow;
 import com.thomas.ui.demo.R;
 import com.thomas.ui.demo.adapter.ItemAdapter;
 import com.thomas.ui.demo.base.DemoActivity;
@@ -67,6 +68,13 @@ public class BottomSheetActivity extends DemoActivity {
                                 ScreenUtils.setPortrait(mActivity);
                             }
                         });
+
+                ThomasWindow.showMenu(thomasTitleBar.getRightTextView(), gridDatas, new OnSingleClickListener() {
+                    @Override
+                    public void onClick(int position, String key, String value) {
+                        ToastUtils.showLong("点击了第" + position + "条数据，key=" + key + ",value=" + value);
+                    }
+                });
             }
         });
 

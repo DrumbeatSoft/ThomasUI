@@ -51,7 +51,7 @@ public class MenuBean extends AbsKV {
     }
 
     @Override
-    protected int getResId() {
+    public int getResId() {
         return resId;
     }
 }

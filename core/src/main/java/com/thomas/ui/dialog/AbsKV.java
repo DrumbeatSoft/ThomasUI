@@ -12,7 +12,7 @@ public abstract class AbsKV implements Cloneable {
 
     public abstract String getValue();
 
-    protected abstract @DrawableRes int getResId();
+    public abstract @DrawableRes int getResId();
 
     void setChoice(boolean isChoice) {
         this.isChoice = isChoice;
