@@ -1,11 +1,11 @@
 package com.thomas.ui.popup;
 
 import android.content.Context;
-import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,13 +42,14 @@ public class MenuPopup extends BaseLazyPopupWindow {
         if (ScreenHelper.isLandscape(context)) {
             //横屏
             setMaxHeight((ScreenHelper.getScreenHeight(context) / 3) * 2);
-            setMaxWidth(ScreenHelper.getScreenHeight(context));
-            setMinWidth(ScreenHelper.getScreenHeight(context));
+            setMaxWidth(ScreenHelper.getScreenWidth(context) / 4);
+            setMinWidth(ScreenHelper.getScreenWidth(context) / 4);
+            setMinHeight(ScreenHelper.getScreenHeight(context) / 4);
         } else {
             //竖屏
             setMaxHeight((ScreenHelper.getScreenHeight(context) / 3) * 2);
-            setMaxWidth(ScreenHelper.getScreenWidth(context)/2);
-            setMinWidth((ScreenHelper.getScreenWidth(context)/3)*2);
+            setMaxWidth(ScreenHelper.getScreenWidth(context) / 2);
+            setMinWidth((ScreenHelper.getScreenWidth(context) / 3) * 2);
         }
     }
 
@@ -61,11 +62,25 @@ public class MenuPopup extends BaseLazyPopupWindow {
     @Override
     public void showPopupWindow(View anchorView) {
         setOffsetX(anchorView.getWidth());
-        super.showPopupWindow(anchorView);
         setAlignBackground(false);
-        setPopupGravity(Gravity.END | Gravity.TOP);
         setAutoLocatePopup(true);
+        super.showPopupWindow(anchorView);
+
     }
+
+
+    @Override
+    public void onAnchorTop() {
+        super.onAnchorTop();
+        Toast.makeText(getContext(), "onAnchorTop", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onAnchorBottom() {
+        super.onAnchorBottom();
+        Toast.makeText(getContext(), "onAnchorBottom", Toast.LENGTH_LONG).show();
+    }
+
 
     @Override
     public void onViewCreated(View contentView) {

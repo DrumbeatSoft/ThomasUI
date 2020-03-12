@@ -19,6 +19,7 @@
         android:textColor="@color/thomasTitleTextColor"
         android:textSize="@dimen/thomasTitleSize"
         tools:text="标题" />
+
     <View
         android:id="@+id/thomas_divider_horizontal"
         android:layout_width="match_parent"
@@ -30,7 +31,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:paddingTop="@dimen/thomasSmallPadding">
+        android:padding="@dimen/thomasSmallPadding">
 
         <com.thomas.ui.date.WheelView
             android:id="@+id/mpvDialogYear"

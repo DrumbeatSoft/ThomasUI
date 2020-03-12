@@ -8,8 +8,6 @@ import android.view.animation.Animation;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -33,7 +31,7 @@ public class MenuDialog<T extends AbsKV> extends BaseLazyPopupWindow {
 
     private AppCompatTextView tvDialogTitle, tvDialogCancel, tvDialogOk;
     private RecyclerView rvDialogContent;
-    private View viewDialogDividerVertical, viewDialogDividerHorizontal;
+    private View viewDialogDividerVertical, viewDialogDividerHorizontal, viewDialogDividerTitle;
     public static int TYPE_ONLY_MENU = 0;
     public static int TYPE_SINGLE_MENU = 1;
     public static int TYPE_MULTIPLE_MENU = 2;
@@ -51,7 +49,7 @@ public class MenuDialog<T extends AbsKV> extends BaseLazyPopupWindow {
         this.builder = builder;
         if (ScreenHelper.isLandscape(context)) {
             //横屏
-            setMaxHeight(ScreenHelper.getScreenHeight(context) / 2);
+            setMaxHeight((ScreenHelper.getScreenHeight(context) / 3) * 2);
             setMaxWidth(ScreenHelper.getScreenWidth(context) / 3);
             setMinWidth(ScreenHelper.getScreenWidth(context) / 3);
             setMinHeight(ScreenHelper.getScreenHeight(context) / 4);
@@ -72,11 +70,13 @@ public class MenuDialog<T extends AbsKV> extends BaseLazyPopupWindow {
         tvDialogOk = findViewById(R.id.thomas_btn_ok);
         viewDialogDividerVertical = findViewById(R.id.thomas_divider_vertical);
         viewDialogDividerHorizontal = findViewById(R.id.thomas_divider_horizontal);
+        viewDialogDividerTitle = findViewById(R.id.thomas_divider_title);
         tvDialogCancel = findViewById(R.id.thomas_btn_cancel);
 
 
         if (builder.dialogType == TYPE_ONLY_MENU) {
             tvDialogTitle.setVisibility(View.GONE);
+            viewDialogDividerTitle.setVisibility(View.GONE);
             tvDialogCancel.setVisibility(View.GONE);
             tvDialogOk.setVisibility(View.GONE);
             viewDialogDividerVertical.setVisibility(View.GONE);
@@ -85,6 +85,7 @@ public class MenuDialog<T extends AbsKV> extends BaseLazyPopupWindow {
 
         if (TextUtils.isEmpty(builder.title)) {
             tvDialogTitle.setVisibility(View.GONE);
+            viewDialogDividerTitle.setVisibility(View.GONE);
         } else {
             tvDialogTitle.setVisibility(View.VISIBLE);
             tvDialogTitle.setText(builder.title);

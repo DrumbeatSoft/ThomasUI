@@ -48,7 +48,7 @@ public class DateDialog extends BaseLazyPopupWindow {
 
         if (ScreenHelper.isLandscape(context)) {
             //横屏
-            setMaxHeight(ScreenHelper.getScreenHeight(context) / 2);
+            setMaxHeight((ScreenHelper.getScreenHeight(context) / 3) * 2);
             setMaxWidth(ScreenHelper.getScreenWidth(context) / 3);
             setMinWidth(ScreenHelper.getScreenWidth(context) / 3);
             setMinHeight(ScreenHelper.getScreenHeight(context) / 4);

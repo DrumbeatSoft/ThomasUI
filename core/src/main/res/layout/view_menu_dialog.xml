@@ -21,6 +21,12 @@
         tools:text="标题" />
 
 
+    <View
+        android:id="@+id/thomas_divider_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/thomasDividerHeight"
+        android:background="@color/thomasDividerColor" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/thomas_rv_content"
         android:layout_width="match_parent"

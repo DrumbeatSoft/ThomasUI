@@ -55,16 +55,16 @@ public class DialogActivity extends DemoActivity {
             }
 
             if (action == ThomasTitleBar.ACTION_RIGHT_TEXT) {
-//                ThomasDialog.showTips(mActivity,
-//                        "切换屏幕方向，来看一下弹窗的展示效果",
-//                        "切换", () -> {
-//
-//                            if (ScreenUtils.isPortrait()) {
-//                                ScreenUtils.setLandscape(mActivity);
-//                            } else {
-//                                ScreenUtils.setPortrait(mActivity);
-//                            }
-//                        });
+                ThomasDialog.showTips(mActivity,
+                        "切换屏幕方向，来看一下弹窗的展示效果",
+                        "切换", () -> {
+
+                            if (ScreenUtils.isPortrait()) {
+                                ScreenUtils.setLandscape(mActivity);
+                            } else {
+                                ScreenUtils.setPortrait(mActivity);
+                            }
+                        });
                 ThomasWindow.showMenu(thomasTitleBar.getRightTextView(), lessDatas, new OnSingleClickListener() {
                     @Override
                     public void onClick(int position, String key, String value) {
