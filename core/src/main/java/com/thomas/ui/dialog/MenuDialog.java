@@ -14,6 +14,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.thomas.ui.R;
+import com.thomas.ui.entity.AbsKV;
 import com.thomas.ui.helper.RecyclerViewHelper;
 import com.thomas.ui.helper.ScreenHelper;
 import com.thomas.ui.listener.OnMultipleClickListener;

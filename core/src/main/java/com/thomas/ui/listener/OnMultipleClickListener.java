@@ -1,6 +1,6 @@
 package com.thomas.ui.listener;
 
-import com.thomas.ui.dialog.AbsKV;
+import com.thomas.ui.entity.AbsKV;
 
 import java.util.List;
 

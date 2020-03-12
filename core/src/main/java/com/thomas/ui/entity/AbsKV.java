@@ -1,4 +1,4 @@
-package com.thomas.ui.dialog;
+package com.thomas.ui.entity;
 
 
 import androidx.annotation.DrawableRes;
@@ -14,17 +14,17 @@ public abstract class AbsKV implements Cloneable {
 
     public abstract @DrawableRes int getResId();
 
-    void setChoice(boolean isChoice) {
+    public void setChoice(boolean isChoice) {
         this.isChoice = isChoice;
     }
 
-    boolean getChoice() {
+    public boolean getChoice() {
         return isChoice;
     }
 
     @NonNull
     @Override
-    protected Object clone() {
+    public Object clone() {
         try {
             return super.clone();
         } catch (CloneNotSupportedException e) {

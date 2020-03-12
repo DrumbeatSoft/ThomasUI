@@ -1,6 +1,6 @@
 package com.thomas.ui.demo.entity;
 
-import com.thomas.ui.dialog.AbsKV;
+import com.thomas.ui.entity.AbsKV;
 
 public class MenuBean extends AbsKV {
 
