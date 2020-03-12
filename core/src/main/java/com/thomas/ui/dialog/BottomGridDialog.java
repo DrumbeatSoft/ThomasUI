@@ -16,6 +16,7 @@ import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.thomas.ui.R;
 import com.thomas.ui.entity.AbsKV;
+import com.thomas.ui.helper.ClickHelper;
 import com.thomas.ui.helper.ScreenHelper;
 import com.thomas.ui.listener.OnSingleClickListener;
 
@@ -92,7 +93,7 @@ public class BottomGridDialog extends BaseLazyPopupWindow {
 
         tvDialogCancel.setText(TextUtils.isEmpty(builder.cancel) ? getContext().getString(android.R.string.cancel) : builder.cancel);
 
-        tvDialogCancel.setOnClickListener(v -> {
+        ClickHelper.applySingleDebouncing(tvDialogCancel, v -> {
             dismiss();
         });
 

@@ -11,6 +11,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import com.thomas.ui.R;
 import com.thomas.ui.date.DateType;
 import com.thomas.ui.date.WheelView;
+import com.thomas.ui.helper.ClickHelper;
 import com.thomas.ui.helper.ScreenHelper;
 import com.thomas.ui.listener.OnDateClickListener;
 
@@ -89,14 +90,16 @@ public class DateDialog extends BaseLazyPopupWindow {
         } else {
             wvDay.setVisibility(View.GONE);
         }
-        tvDialogOk.setOnClickListener(v -> {
+
+        ClickHelper.applySingleDebouncing(tvDialogOk, v -> {
             dismiss();
             if (builder.onDateClickListener != null) {
                 builder.onDateClickListener.onClick(getDate(mCurrentYear, mCurrentMonth, mCurrentDay));
             }
 
         });
-        tvDialogCancel.setOnClickListener(v -> dismiss());
+        ClickHelper.applySingleDebouncing(tvDialogCancel, v -> dismiss());
+
 
 
         wvYear.setOnSelectListener((view, data) -> {

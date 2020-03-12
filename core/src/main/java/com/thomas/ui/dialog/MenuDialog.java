@@ -15,6 +15,7 @@ import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.thomas.ui.R;
 import com.thomas.ui.entity.AbsKV;
+import com.thomas.ui.helper.ClickHelper;
 import com.thomas.ui.helper.RecyclerViewHelper;
 import com.thomas.ui.helper.ScreenHelper;
 import com.thomas.ui.listener.OnMultipleClickListener;
@@ -94,8 +95,7 @@ public class MenuDialog<T extends AbsKV> extends BaseLazyPopupWindow {
 
         tvDialogCancel.setText(TextUtils.isEmpty(builder.cancel) ? getContext().getString(android.R.string.cancel) : builder.cancel);
         tvDialogOk.setText(TextUtils.isEmpty(builder.ok) ? getContext().getString(android.R.string.ok) : builder.ok);
-
-        tvDialogCancel.setOnClickListener(v -> {
+        ClickHelper.applySingleDebouncing(tvDialogCancel,v -> {
             dismiss();
             builder.items.clear();
             builder.items.addAll(builder.temps);
@@ -103,7 +103,7 @@ public class MenuDialog<T extends AbsKV> extends BaseLazyPopupWindow {
 
         if (builder.dialogType != TYPE_ONLY_MENU) {
 
-            tvDialogOk.setOnClickListener(v -> {
+            ClickHelper.applySingleDebouncing(tvDialogOk,v -> {
                 dismiss();
                 for (int i = 0; i < builder.items.size(); i++) {
                     if (((T) builder.items.get(i)).getChoice()) {

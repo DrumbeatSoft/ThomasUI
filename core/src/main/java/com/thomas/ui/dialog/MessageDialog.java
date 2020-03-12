@@ -9,6 +9,7 @@ import android.view.animation.Animation;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.thomas.ui.R;
+import com.thomas.ui.helper.ClickHelper;
 import com.thomas.ui.helper.ScreenHelper;
 import com.thomas.ui.listener.OnDialogClickListener;
 
@@ -81,18 +82,18 @@ public class MessageDialog extends BaseLazyPopupWindow {
         tvDialogOk.setText(TextUtils.isEmpty(builder.ok) ? getContext().getString(android.R.string.ok) : builder.ok);
 
         if (builder.onCancelClickListener == null) {
-            tvDialogCancel.setOnClickListener(v -> dismiss());
+            ClickHelper.applySingleDebouncing(tvDialogCancel, v -> dismiss());
         } else {
-            tvDialogCancel.setOnClickListener(v -> {
+            ClickHelper.applySingleDebouncing(tvDialogCancel, v -> {
                 dismiss();
                 builder.onCancelClickListener.onClick();
             });
         }
 
         if (builder.onSureClickListener == null) {
-            tvDialogOk.setOnClickListener(v -> dismiss());
+            ClickHelper.applySingleDebouncing(tvDialogOk, v -> dismiss());
         } else {
-            tvDialogOk.setOnClickListener(v -> {
+            ClickHelper.applySingleDebouncing(tvDialogOk, v -> {
                 dismiss();
                 builder.onSureClickListener.onClick();
             });
