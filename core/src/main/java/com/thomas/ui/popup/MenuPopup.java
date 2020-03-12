@@ -69,7 +69,7 @@ public class MenuPopup extends BaseLazyPopupWindow {
 
     @Override
     public void onViewCreated(View contentView) {
-        rvDialogContent = findViewById(R.id.rv_dialog_content);
+        rvDialogContent = findViewById(R.id.thomas_rv_content);
 
         DialogMenuAdapter adapter = new DialogMenuAdapter();
 
@@ -117,12 +117,10 @@ public class MenuPopup extends BaseLazyPopupWindow {
             this.context = context;
         }
 
-
         public Builder setItems(List<T> datas) {
             this.items = datas;
             return this;
         }
-
 
         public Builder setOnItemClickListener(OnSingleClickListener onSingleClickListener) {
             this.onSingleClickListener = onSingleClickListener;

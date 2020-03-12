@@ -22,6 +22,7 @@ import com.thomas.ui.demo.base.DemoActivity;
 import com.thomas.ui.demo.entity.MenuBean;
 import com.thomas.ui.listener.OnDateClickListener;
 import com.thomas.ui.listener.OnMultipleClickListener;
+import com.thomas.ui.listener.OnSearchClickListener;
 import com.thomas.ui.listener.OnSingleClickListener;
 
 import java.util.ArrayList;
@@ -82,10 +83,10 @@ public class DialogActivity extends DemoActivity {
         datas.add("消息弹窗\n(带有标题的,有两个按钮交互)");
         datas.add("提示弹窗\n(有很长的内容)");
         datas.add("消息弹窗\n(有很长的内容)");
-        datas.add("");
+        datas.add("与View关联的弹窗");
         datas.add("菜单弹窗\n(数据比较少)");
         datas.add("菜单弹窗\n(有很多数据)");
-        datas.add("");
+        datas.add("与View关联的弹窗\n（带搜索）");
         datas.add("单选弹窗\n(数据比较少)");
         datas.add("单选弹窗\n(有很多数据)");
         datas.add("单选弹窗\n(带标题和自定义按钮文字的)");
@@ -139,6 +140,15 @@ public class DialogActivity extends DemoActivity {
                             "自定义按钮\n(确定)", () -> ToastUtils.showShort("响应了确定按钮的点击事件"),
                             "自定义文字\n(取消)", () -> ToastUtils.showShort("响应了取消按钮的点击事件"));
                 }
+
+                if (position == 8) {
+                    ThomasWindow.showMultiple(view, lessDatas, new OnMultipleClickListener<MenuBean>() {
+                        @Override
+                        public void onClick(List<MenuBean> datas) {
+                            ToastUtils.showLong("共选择了" + datas.size() + "条数据");
+                        }
+                    });
+                }
                 if (position == 9) {
                     ThomasDialog.showMenu(mActivity, lessDatas, new OnSingleClickListener() {
                         @Override
@@ -157,6 +167,20 @@ public class DialogActivity extends DemoActivity {
                         }
                     });
 
+                }
+                if (position == 11) {
+                    ThomasWindow.showSingleWithSearch(view, "输入关键字", lessDatas, new OnSingleClickListener() {
+                        @Override
+                        public void onClick(int position, String key, String value) {
+                            ToastUtils.showLong("点击了第" + position + "条数据，key=" + key + ",value=" + value);
+                        }
+                    }, new OnSearchClickListener() {
+                        @Override
+                        public void onClick(String key, BaseQuickAdapter adapter) {
+                            ToastUtils.showShort(key);
+                            adapter.setNewData(manyDatas);
+                        }
+                    });
                 }
 
                 if (position == 12) {

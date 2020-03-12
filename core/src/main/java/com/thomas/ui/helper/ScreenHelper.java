@@ -2,6 +2,7 @@ package com.thomas.ui.helper;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Build;
 import android.view.WindowManager;
@@ -64,6 +65,18 @@ public class ScreenHelper {
     public static boolean isLandscape(Context context) {
         return context.getResources().getConfiguration().orientation
                 == Configuration.ORIENTATION_LANDSCAPE;
+    }
+
+
+    /**
+     * Return the status bar's height.
+     *
+     * @return the status bar's height
+     */
+    public static int getStatusBarHeight(Context context) {
+        Resources resources = context.getResources();
+        int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
+        return resources.getDimensionPixelSize(resourceId);
     }
 
 }
