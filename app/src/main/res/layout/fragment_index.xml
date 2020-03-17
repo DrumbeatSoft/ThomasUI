@@ -46,6 +46,16 @@
             android:layout_marginEnd="@dimen/thomasLargeMargin"
             android:layout_marginBottom="@dimen/thomasSmallMargin"
             android:text="ThomasBottomSheet(底部弹窗)" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_photo_preview"
+            style="@style/ThomasButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/thomasLargeMargin"
+            android:layout_marginEnd="@dimen/thomasLargeMargin"
+            android:layout_marginBottom="@dimen/thomasSmallMargin"
+            android:text="ThomasPreview(图片浏览)" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.core.widget.NestedScrollView>

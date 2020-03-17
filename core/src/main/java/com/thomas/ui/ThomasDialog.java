@@ -14,6 +14,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import razerdp.basepopup.BasePopupWindow;
+
 public class ThomasDialog {
 
 
@@ -259,6 +261,10 @@ public class ThomasDialog {
                 .setCancel(cancel)
                 .setOnDateClickListener(onDateClickListener)
                 .build().setPopupFadeEnable(true).showPopupWindow();
+    }
+
+    public static void showCustomDialog(BasePopupWindow basePopupWindow) {
+        basePopupWindow.showPopupWindow();
     }
 
 }

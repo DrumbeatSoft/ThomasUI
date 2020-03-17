@@ -9,6 +9,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.thomas.core.utils.ActivityUtils;
 import com.thomas.core.utils.ColorUtils;
+import com.thomas.ui.ThomasPreview;
 import com.thomas.ui.badge.Badge;
 import com.thomas.ui.badge.BadgeView;
 import com.thomas.ui.demo.R;
@@ -17,6 +18,8 @@ import com.thomas.ui.demo.component.BottomSheetActivity;
 import com.thomas.ui.demo.component.DialogActivity;
 import com.thomas.ui.demo.component.TipsActivity;
 import com.thomas.ui.demo.component.TitleBarActivity;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 
@@ -32,6 +35,8 @@ public class IndexFragment extends DemoLazyFragment {
     AppCompatButton btnBottomSheet;
 
     BadgeView badgeView;
+    @BindView(R.id.btn_photo_preview)
+    AppCompatButton btnPhotoPreview;
 
     public static IndexFragment newInstance() {
         IndexFragment fragment = new IndexFragment();
@@ -49,7 +54,7 @@ public class IndexFragment extends DemoLazyFragment {
 
     @Override
     public void initView(@Nullable Bundle savedInstanceState, @Nullable View contentView) {
-        applyThomasClickListener(btnTitleBar, btnDialog, btnTips, btnBottomSheet);
+        applyThomasClickListener(btnTitleBar, btnDialog, btnTips, btnBottomSheet,btnPhotoPreview );
 
 
         badgeView = new BadgeView(mActivity);
@@ -93,6 +98,10 @@ public class IndexFragment extends DemoLazyFragment {
         }
         if (view == btnBottomSheet) {
             ActivityUtils.startActivity(BottomSheetActivity.class);
+        }
+
+        if (view == btnPhotoPreview) {
+            ThomasPreview.showPreview(mActivity, new ArrayList<>());
         }
     }
 }
