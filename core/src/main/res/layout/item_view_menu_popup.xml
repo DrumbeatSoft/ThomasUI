@@ -6,15 +6,12 @@
     android:background="@drawable/thomas_r8_selector"
     android:gravity="center"
     android:orientation="horizontal"
-    android:paddingStart="@dimen/thomasSmallPadding"
-    android:paddingTop="@dimen/thomasNormalPadding"
-    android:paddingEnd="@dimen/thomasSmallPadding"
-    android:paddingBottom="@dimen/thomasNormalPadding">
+    android:padding="@dimen/thomasSmallPadding">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/thomas_iv_item_res"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_centerVertical="true"
         android:layout_marginStart="@dimen/thomasSmallPadding"
         android:layout_marginEnd="@dimen/thomasNormalPadding" />
@@ -25,7 +22,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ellipsize="middle"
+        android:gravity="center_vertical"
         android:singleLine="true"
-        android:textSize="@dimen/thomasContentSize"
+        android:textSize="@dimen/thomasSmallSize"
         tools:text="选项一" />
 </androidx.appcompat.widget.LinearLayoutCompat>

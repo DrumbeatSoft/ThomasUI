@@ -20,6 +20,7 @@ import com.thomas.ui.demo.component.TipsActivity;
 import com.thomas.ui.demo.component.TitleBarActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -54,7 +55,7 @@ public class IndexFragment extends DemoLazyFragment {
 
     @Override
     public void initView(@Nullable Bundle savedInstanceState, @Nullable View contentView) {
-        applyThomasClickListener(btnTitleBar, btnDialog, btnTips, btnBottomSheet,btnPhotoPreview );
+        applyThomasClickListener(btnTitleBar, btnDialog, btnTips, btnBottomSheet, btnPhotoPreview);
 
 
         badgeView = new BadgeView(mActivity);
@@ -101,7 +102,10 @@ public class IndexFragment extends DemoLazyFragment {
         }
 
         if (view == btnPhotoPreview) {
-            ThomasPreview.showPreview(mActivity, new ArrayList<>());
+            List<String> images = new ArrayList<>();
+            images.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584521945350&di=aa55ffa00b79a45a0cca484ca4345ecd&imgtype=0&src=http%3A%2F%2Fcdn.qiancipai.com%2F190305170514872174.jpg");
+           images.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584521945350&di=63882d24f52d47c2edd1515b28adb3df&imgtype=0&src=http%3A%2F%2Ffile.digitaling.com%2FeImg%2Fuimages%2F20160512%2F1463021628937068.jpg");
+            ThomasPreview.showPreview(mActivity, 2,images);
         }
     }
 }
