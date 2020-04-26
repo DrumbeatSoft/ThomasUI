@@ -56,7 +56,6 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
 
     private MenuWindow(Context context) {
         super(context);
-        setAdjustInputMethod(false);
     }
 
     public MenuWindow(Context context, Builder builder) {
@@ -76,13 +75,15 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
             setMinWidth(ScreenHelper.getScreenWidth(context) / 2);
             setMaxWidth((ScreenHelper.getScreenWidth(context) / 4) * 3);
         }
+
+
     }
 
     @Override
     public View onCreateContentView() {
         return createPopupById(R.layout.view_menu_window);
     }
-    
+
     @Override
     public void dismiss() {
         KeyboardUtils.close(getContentView());
@@ -95,9 +96,8 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
         setAlignBackground(false);
         setAutoLocatePopup(true);
         setPopupFadeEnable(true);
-     
+//        setAdjustInputMode(BasePopupWindow.FLAG_KEYBOARD_ANIMATE_ALIGN);
         super.showPopupWindow(anchorView);
-
     }
 
 
@@ -166,7 +166,7 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
         rvDialogContent.setAdapter(adapter);
         rvDialogContent.setLayoutManager(RecyclerViewHelper.getDefaultLayoutManager(getContext()));
         rvDialogContent.addItemDecoration(RecyclerViewHelper.getDefaultItemDecoration(getContext()));
-        adapter.setNewData(builder.items);
+        adapter.setNewInstance(builder.items);
         adapter.setEmptyView(R.layout.view_default_empty);
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -227,7 +227,7 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
     }
 
     private void updateData(DialogMenuAdapter adapter, List filter) {
-        adapter.setNewData(filter);
+        adapter.setNewInstance(filter);
     }
 
 
