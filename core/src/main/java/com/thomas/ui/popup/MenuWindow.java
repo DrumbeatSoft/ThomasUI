@@ -56,6 +56,7 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
 
     private MenuWindow(Context context) {
         super(context);
+        setAdjustInputMethod(false);
     }
 
     public MenuWindow(Context context, Builder builder) {
@@ -94,7 +95,7 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
         setAlignBackground(false);
         setAutoLocatePopup(true);
         setPopupFadeEnable(true);
-        setAdjustInputMethod(false);
+     
         super.showPopupWindow(anchorView);
 
     }
