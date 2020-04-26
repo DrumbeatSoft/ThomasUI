@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/thomasSmallMargin"
-    android:layout_marginTop="@dimen/thomasLargeMargin"
+    android:layout_marginTop="@dimen/thomasSmallMargin"
     android:layout_marginEnd="@dimen/thomasSmallMargin"
     android:layout_marginBottom="@dimen/thomasSmallMargin"
     android:background="@drawable/thomas_shape_r8_white"
