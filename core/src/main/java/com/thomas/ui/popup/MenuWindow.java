@@ -88,7 +88,7 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
         setAlignBackground(false);
         setAutoLocatePopup(true);
         setPopupFadeEnable(true);
-        setAdjustInputMode(BasePopupWindow.FLAG_KEYBOARD_ANIMATE_ALIGN);
+        setAdjustInputMethod(false);
         super.showPopupWindow(anchorView);
 
     }
