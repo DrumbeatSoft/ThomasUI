@@ -35,6 +35,7 @@ import java.util.regex.Pattern;
 
 import razerdp.basepopup.BaseLazyPopupWindow;
 import razerdp.basepopup.BasePopupWindow;
+import razerdp.util.KeyboardUtils;
 
 public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
     private Builder builder;
@@ -80,7 +81,12 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
     public View onCreateContentView() {
         return createPopupById(R.layout.view_menu_window);
     }
-
+    
+    @Override
+    public void dismiss() {
+        KeyboardUtils.close(getContentView());
+        super.dismiss();
+    }
 
     @Override
     public void showPopupWindow(View anchorView) {
