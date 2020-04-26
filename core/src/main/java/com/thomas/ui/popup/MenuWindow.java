@@ -222,6 +222,7 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
                 } else {
                     updateData(adapter, filter(builder.items, etDialogSearch.getEditableText().toString()));
                 }
+                KeyboardUtils.close(getContentView());
             }
         });
     }
