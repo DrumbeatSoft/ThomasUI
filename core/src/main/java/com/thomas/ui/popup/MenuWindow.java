@@ -52,7 +52,7 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
 
 
     private List<T> selectItems = new ArrayList<>();
-    private int position = 0;
+    private int position = -1;
 
     private MenuWindow(Context context) {
         super(context);
@@ -151,7 +151,7 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
                     selectItems.add((T) builder.items.get(i));
                 }
             }
-            if (builder.dialogType == TYPE_SINGLE_MENU && builder.onSingleClickListener != null) {
+            if (builder.dialogType == TYPE_SINGLE_MENU && builder.onSingleClickListener != null&&position!=-1) {
                 builder.onSingleClickListener.onClick(position, selectItems.get(0).getKey(), selectItems.get(0).getValue());
             }
             if (builder.dialogType == TYPE_MULTIPLE_MENU && builder.onMultipleClickListener != null) {
