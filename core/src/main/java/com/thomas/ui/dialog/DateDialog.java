@@ -83,7 +83,7 @@ public class DateDialog extends BaseLazyPopupWindow {
 
         tvDialogCancel.setText(TextUtils.isEmpty(builder.cancel) ? getContext().getString(android.R.string.cancel) : builder.cancel);
         tvDialogOk.setText(TextUtils.isEmpty(builder.ok) ? getContext().getString(android.R.string.ok) : builder.ok);
-
+        ClickHelper.applyPressedViewAlpha(tvDialogOk, tvDialogCancel);
 
         if (builder.hasDay) {
             wvDay.setVisibility(View.VISIBLE);
@@ -99,7 +99,6 @@ public class DateDialog extends BaseLazyPopupWindow {
 
         });
         ClickHelper.applySingleDebouncing(tvDialogCancel, v -> dismiss());
-
 
 
         wvYear.setOnSelectListener((view, data) -> {

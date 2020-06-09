@@ -25,18 +25,17 @@ import razerdp.basepopup.BaseLazyPopupWindow;
 /**
  * 菜单popupWindow
  */
-public class MenuPopup extends BaseLazyPopupWindow {
+public class ListPopup extends BaseLazyPopupWindow {
     private Builder builder;
     private RecyclerView rvDialogContent;
 
-    public MenuPopup(Context context) {
+    public ListPopup(Context context) {
         super(context);
     }
 
-    private MenuPopup(Context context, Builder builder) {
+    private ListPopup(Context context, Builder builder) {
         this(context);
         this.builder = builder;
-
 
         if (ScreenHelper.isLandscape(context)) {
             //横屏
@@ -76,7 +75,7 @@ public class MenuPopup extends BaseLazyPopupWindow {
         rvDialogContent.setAdapter(adapter);
         rvDialogContent.setLayoutManager(RecyclerViewHelper.getDefaultLayoutManager(getContext()));
         rvDialogContent.addItemDecoration(RecyclerViewHelper.getDefaultItemDecoration(getContext()));
-        adapter.setNewData(builder.items);
+        adapter.setNewInstance(builder.items);
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
@@ -127,8 +126,8 @@ public class MenuPopup extends BaseLazyPopupWindow {
             return this;
         }
 
-        public MenuPopup build() {
-            return new MenuPopup(context, this);
+        public ListPopup build() {
+            return new ListPopup(context, this);
         }
     }
 

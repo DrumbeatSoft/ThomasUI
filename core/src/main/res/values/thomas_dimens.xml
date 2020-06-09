@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 全局统一的界面左右间距，例如列表分隔线inset -->
+    <dimen name="thomas_content_spacing_horizontal">16dp</dimen>
+    <!-- 提示标点 -->
+    <dimen name="thomas_tips_point_size">8dp</dimen>
+
+    <!--    模块大标题，一般用于头部标题-->
+    <dimen name="thomas_title_size">18sp</dimen>
+    <!--    模块小标题，一般用于内容模块-->
+    <dimen name="thomas_subtitle_size">16sp</dimen>
+    <!--    正文内容文字大小-->
+    <dimen name="thomas_content_size">14sp</dimen>
+    <!--    次要内容文字大小-->
+    <dimen name="thomas_secondary_size">12sp</dimen>
+    <!--    辅助内容文字大小-->
+    <dimen name="thomas_aide_size">10sp</dimen>
+    <!--    弹窗的圆角大小-->
+    <dimen name="thomas_dialog_radius">8dp</dimen>
+    <!--    分割线高度-->
+    <dimen name="thomas_divider_height">1px</dimen>
+    <!--    全局统一的比较小的间距-->
+    <dimen name="thomas_min_spacing">8dp</dimen>
+</resources>

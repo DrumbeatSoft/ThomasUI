@@ -1,15 +1,12 @@
-package com.thomas.ui;
+package com.thomas.ui.quick;
 
 import android.content.Context;
 import android.view.Gravity;
 
-import com.thomas.ui.dialog.BottomDateDialog;
 import com.thomas.ui.dialog.BottomGridDialog;
 import com.thomas.ui.dialog.BottomListDialog;
-import com.thomas.ui.listener.OnDateClickListener;
 import com.thomas.ui.listener.OnSingleClickListener;
 
-import java.util.Date;
 import java.util.List;
 
 public class ThomasBottomSheet {
@@ -55,12 +52,11 @@ public class ThomasBottomSheet {
      *
      * @param context
      * @param title
-     * @param cancel
      * @param datas
      * @param onSingleClickListener
      */
-    public static void showBottomSheetAll(Context context, String title, String cancel, List datas, OnSingleClickListener onSingleClickListener) {
-        showBottomSheetAll(context, Gravity.CENTER, title, cancel, datas, onSingleClickListener);
+    public static void showBottomSheetAll(Context context, String title, List datas, OnSingleClickListener onSingleClickListener) {
+        showBottomSheetAll(context, Gravity.CENTER, title, datas, onSingleClickListener);
     }
 
     /**
@@ -68,11 +64,12 @@ public class ThomasBottomSheet {
      *
      * @param context
      * @param title
+     * @param cancel
      * @param datas
      * @param onSingleClickListener
      */
-    public static void showBottomSheetAll(Context context, String title, List datas, OnSingleClickListener onSingleClickListener) {
-        showBottomSheetAll(context, Gravity.CENTER, title, datas, onSingleClickListener);
+    public static void showBottomSheetAll(Context context, String title, String cancel, List datas, OnSingleClickListener onSingleClickListener) {
+        showBottomSheetAll(context, Gravity.CENTER, title, cancel, datas, onSingleClickListener);
     }
 
 
@@ -141,40 +138,9 @@ public class ThomasBottomSheet {
         builder.setTitle(title).setCancel(cancel).setGravity(gravity).setShowCancel(showCancel).setItems(datas).setOnItemClickListener(onSingleClickListener).build().showPopupWindow();
     }
 
-
-    /**
-     * 展示一个不带标题的底部时间选择弹窗
-     *
-     * @param context
-     * @param startYear
-     * @param endYear
-     * @param selectDate
-     * @param hasDay
-     * @param onDateClickListener
-     */
-    public static void showBottomDate(Context context, int startYear, int endYear, Date selectDate, boolean hasDay, OnDateClickListener onDateClickListener) {
-        showBottomDate(context, "", startYear, endYear, selectDate, hasDay, onDateClickListener);
-    }
-
-    /**
-     * 展示一个带标题的底部时间选择弹窗
-     *
-     * @param context
-     * @param title
-     * @param startYear
-     * @param endYear
-     * @param selectDate
-     * @param hasDay
-     * @param onDateClickListener
-     */
-    public static void showBottomDate(Context context, String title, int startYear, int endYear, Date selectDate, boolean hasDay, OnDateClickListener onDateClickListener) {
-        BottomDateDialog.Builder builder = new BottomDateDialog.Builder(context);
-        builder.setTitle(title).setStartYear(startYear).setEndYear(endYear).setSelectedDate(selectDate)
-                .supportDay(hasDay).setOnDateClickListener(onDateClickListener).build().showPopupWindow();
-    }
-
     /**
      * 展示一个底部宫格弹窗
+     *
      * @param context
      * @param datas
      * @param onSingleClickListener
@@ -185,6 +151,7 @@ public class ThomasBottomSheet {
 
     /**
      * 展示一个带取消的底部宫格弹窗
+     *
      * @param context
      * @param cancel
      * @param datas
@@ -196,6 +163,7 @@ public class ThomasBottomSheet {
 
     /**
      * 展示一个带标题的底部宫格弹窗
+     *
      * @param context
      * @param title
      * @param datas
@@ -207,6 +175,7 @@ public class ThomasBottomSheet {
 
     /**
      * 展示一个带标题和取消的底部宫格弹窗
+     *
      * @param context
      * @param title
      * @param cancel

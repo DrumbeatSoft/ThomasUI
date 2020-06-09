@@ -4,7 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="bottom"
-    android:background="@drawable/thomas_shape_r8_top_white"
+    android:background="@color/thomas_config_color_white"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -15,9 +15,9 @@
         android:paddingStart="@dimen/thomasNormalPadding"
         android:paddingTop="@dimen/thomasNormalPadding"
         android:paddingEnd="@dimen/thomasNormalPadding"
-        android:paddingBottom="@dimen/thomasSmallPadding"
+        android:paddingBottom="@dimen/thomasNormalPadding"
         android:textColor="@color/thomasTitleTextColor"
-        android:textSize="@dimen/thomasTitleSize"
+        android:textSize="@dimen/thomasButtonSize"
         tools:text="标题" />
 
     <View
@@ -41,12 +41,11 @@
         android:layout_height="@dimen/thomasDividerHeight"
         android:background="@color/thomasDividerColor"
         android:visibility="invisible" />
-
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/thomas_btn_cancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/thomas_r8_bottom_selector"
+        android:background="?android:attr/selectableItemBackground"
         android:gravity="center"
         android:padding="@dimen/thomasNormalPadding"
         android:textColor="@color/thomasButtonTextColor"

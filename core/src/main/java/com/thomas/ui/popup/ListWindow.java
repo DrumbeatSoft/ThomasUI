@@ -11,6 +11,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatCheckedTextView;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -22,6 +23,7 @@ import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.thomas.ui.R;
 import com.thomas.ui.entity.AbsKV;
+import com.thomas.ui.helper.ClickHelper;
 import com.thomas.ui.helper.RecyclerViewHelper;
 import com.thomas.ui.helper.ScreenHelper;
 import com.thomas.ui.listener.OnMultipleClickListener;
@@ -29,15 +31,17 @@ import com.thomas.ui.listener.OnSearchClickListener;
 import com.thomas.ui.listener.OnSingleClickListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import razerdp.basepopup.BaseLazyPopupWindow;
-import razerdp.basepopup.BasePopupWindow;
 import razerdp.util.KeyboardUtils;
 
-public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
+public class ListWindow<T extends AbsKV> extends BaseLazyPopupWindow {
     private Builder builder;
     private AppCompatTextView tvDialogCancel, tvDialogOk;
     private LinearLayoutCompat llSearch;
@@ -50,15 +54,16 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
     public static int TYPE_SINGLE_MENU = 1;
     public static int TYPE_MULTIPLE_MENU = 2;
 
-
+    private final HashMap<Integer, Object> mSelectSet = new HashMap<>();
     private List<T> selectItems = new ArrayList<>();
-    private int position = -1;
+    private List<Integer> selectedPositions = new ArrayList<>();
 
-    private MenuWindow(Context context) {
+
+    private ListWindow(Context context) {
         super(context);
     }
 
-    public MenuWindow(Context context, Builder builder) {
+    public ListWindow(Context context, Builder builder) {
         this(context);
         this.builder = builder;
 
@@ -94,9 +99,9 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
     public void showPopupWindow(View anchorView) {
         setOffsetX(anchorView.getWidth());
         setAlignBackground(false);
-        setAutoLocatePopup(true);
+        setAutoLocatePopup(false);
         setPopupFadeEnable(true);
-        setAdjustInputMode(R.id.thomas_et_search,FLAG_KEYBOARD_ALIGN_TO_VIEW|FLAG_KEYBOARD_ANIMATE_ALIGN);
+        setAdjustInputMethod(true, FLAG_KEYBOARD_IGNORE_OVER | FLAG_KEYBOARD_ANIMATE_ALIGN);
         super.showPopupWindow(anchorView);
     }
 
@@ -136,52 +141,59 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
             viewDialogDividerTitle.setVisibility(View.GONE);
         }
 
-        tvDialogCancel.setOnClickListener(v -> {
+        ClickHelper.applySingleDebouncing(tvDialogCancel, v -> {
+            mSelectSet.clear();
             dismiss();
-            builder.items.clear();
-            builder.items.addAll(builder.temps);
         });
-        tvDialogOk.setOnClickListener(v -> {
-            dismiss();
-            for (int i = 0; i < builder.items.size(); i++) {
-                if (((T) builder.items.get(i)).getChoice()) {
-                    if (builder.dialogType == TYPE_SINGLE_MENU) {
-                        position = i;
-                    }
-                    selectItems.add((T) builder.items.get(i));
+
+        ClickHelper.applySingleDebouncing(tvDialogOk, v -> {
+            selectItems.clear();
+            selectedPositions.clear();
+            Iterator<Map.Entry<Integer, Object>> iterator = mSelectSet.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<Integer, Object> entry = iterator.next();
+                selectItems.add((T) entry.getValue());
+                selectedPositions.add(entry.getKey());
+            }
+            if (selectedPositions != null && selectedPositions.size() != 0 && selectItems != null && selectItems.size() != 0) {
+                if (builder.dialogType == TYPE_MULTIPLE_MENU && builder.onMultipleClickListener != null) {
+                    builder.onMultipleClickListener.onClick(selectedPositions, selectItems);
+                } else {
+                    builder.onSingleClickListener.onClick(selectedPositions.get(0), selectItems.get(0).getKey(), selectItems.get(0).getValue());
                 }
             }
-            if (builder.dialogType == TYPE_SINGLE_MENU && builder.onSingleClickListener != null&&position!=-1) {
-                builder.onSingleClickListener.onClick(position, selectItems.get(0).getKey(), selectItems.get(0).getValue());
-            }
-            if (builder.dialogType == TYPE_MULTIPLE_MENU && builder.onMultipleClickListener != null) {
-                builder.onMultipleClickListener.onClick(selectItems);
-            }
-
+            dismiss();
         });
 
 
-        DialogMenuAdapter adapter = new DialogMenuAdapter();
+        DialogMenuAdapter<T> menuAdapter = new DialogMenuAdapter();
 
-        rvDialogContent.setAdapter(adapter);
+        rvDialogContent.setAdapter(menuAdapter);
         rvDialogContent.setLayoutManager(RecyclerViewHelper.getDefaultLayoutManager(getContext()));
         rvDialogContent.addItemDecoration(RecyclerViewHelper.getDefaultItemDecoration(getContext()));
-        adapter.setNewInstance(builder.items);
-        adapter.setEmptyView(R.layout.view_default_empty);
-        adapter.setOnItemClickListener(new OnItemClickListener() {
+        menuAdapter.setNewInstance(builder.items);
+        menuAdapter.setSelected(builder.positions);
+        menuAdapter.setEmptyView(R.layout.view_default_empty);
+        menuAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                AbsKV clickBean = (AbsKV) adapter.getData().get(position);
-
-                if (builder.dialogType == TYPE_MULTIPLE_MENU) {
-                    clickBean.setChoice(!clickBean.getChoice());
-                } else {
-                    //单选的逻辑
-                    for (int i = 0; i < adapter.getData().size(); i++) {
-                        ((AbsKV) adapter.getData().get(i)).setChoice(i == position);
+                T clickBean = menuAdapter.getData().get(position);
+                if (mSelectSet.containsKey(position)) {
+                    if (builder.dialogType == TYPE_MULTIPLE_MENU) {
+                        mSelectSet.remove(position);
+                        adapter.notifyItemChanged(position);
                     }
+                } else {
+                    if (builder.dialogType == TYPE_MULTIPLE_MENU) {
+                        mSelectSet.put(position, clickBean);
+                        adapter.notifyItemChanged(position);
+                    } else {
+                        mSelectSet.clear();
+                        mSelectSet.put(position, clickBean);
+                        adapter.notifyDataSetChanged();
+                    }
+
                 }
-                adapter.notifyDataSetChanged();
             }
         });
 
@@ -190,8 +202,7 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-
-                    updateData(adapter, filter(builder.items, etDialogSearch.getEditableText().toString()));
+                    updateData(menuAdapter, filter(builder.items, etDialogSearch.getEditableText().toString()));
                 }
                 return false;
             }
@@ -210,7 +221,7 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
 
             @Override
             public void afterTextChanged(Editable s) {
-                updateData(adapter, filter(builder.items, etDialogSearch.getEditableText().toString()));
+                updateData(menuAdapter, filter(builder.items, etDialogSearch.getEditableText().toString()));
             }
         });
 
@@ -218,9 +229,9 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
             @Override
             public void onClick(View v) {
                 if (builder.onSearchClickListener != null) {
-                    builder.onSearchClickListener.onClick(etDialogSearch.getEditableText().toString(), adapter);
+                    builder.onSearchClickListener.onClick(etDialogSearch.getEditableText().toString(), menuAdapter);
                 } else {
-                    updateData(adapter, filter(builder.items, etDialogSearch.getEditableText().toString()));
+                    updateData(menuAdapter, filter(builder.items, etDialogSearch.getEditableText().toString()));
                 }
                 KeyboardUtils.close(getContentView());
             }
@@ -242,7 +253,6 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
                 AbsKV currentBean = (AbsKV) items.get(i);
                 Matcher m = p.matcher(currentBean.getKey());
                 if (m.find()) {
-                    currentBean.setChoice(currentBean.getChoice());
                     results.add(currentBean);
                 }
             }
@@ -256,7 +266,7 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
         private int dialogType = TYPE_SINGLE_MENU;
         private boolean withSearch = false;
         private List<T> items;
-        private List<T> temps = new ArrayList<>();
+        private List<Integer> positions;
         private OnSingleClickListener onSingleClickListener;
         private OnMultipleClickListener onMultipleClickListener;
         private OnSearchClickListener onSearchClickListener;
@@ -274,9 +284,14 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
 
         public Builder setItems(List<T> datas) {
             this.items = datas;
-            for (T t : datas) {
-                temps.add((T) t.clone());
+            return this;
+        }
+
+        public Builder setSelected(List<Integer> positions) {
+            if (positions == null) {
+                positions = new ArrayList<>();
             }
+            this.positions = positions;
             return this;
         }
 
@@ -315,14 +330,13 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
             return this;
         }
 
-        public MenuWindow build() {
-            return new MenuWindow(context, this);
+        public ListWindow build() {
+            return new ListWindow(context, this);
         }
     }
 
 
     private class DialogMenuAdapter<T extends AbsKV> extends BaseQuickAdapter<T, BaseViewHolder> {
-        private static final int SELECT_PAYLOAD = 110;
 
         public DialogMenuAdapter() {
             super(R.layout.item_view_menu_dialog);
@@ -330,28 +344,18 @@ public class MenuWindow<T extends AbsKV> extends BaseLazyPopupWindow {
 
         @Override
         protected void convert(@NonNull BaseViewHolder helper, T item) {
+            AppCompatCheckedTextView ctv = helper.findView(R.id.thomas_ctv_item_name);
 
-            helper.setText(R.id.thomas_tv_item_name, item.getKey());
-            changeState(helper, item, false);
+            ctv.setCheckMarkDrawable(R.drawable.thomas_choice_selector);
+            ctv.setText(item.getKey());
+            ctv.setChecked(mSelectSet.containsKey(helper.getAdapterPosition()));
         }
 
-        @Override
-        protected void convert(BaseViewHolder helper, T item, List<?> payloads) {
-            for (Object payload : payloads) {
-                if (payload instanceof Integer && (int) payload == SELECT_PAYLOAD) {
-                    // 增量刷新，使用动画变化箭头
-                    changeState(helper, item, true);
-                }
+        public void setSelected(List<Integer> positions) {
+            for (int position : positions) {
+                mSelectSet.put(position, getItem(position));
             }
-        }
-
-
-        private void changeState(BaseViewHolder helper, AbsKV item, boolean isAnimate) {
-            if (item.getChoice()) {
-                helper.setImageResource(R.id.thomas_iv_item_state, R.drawable.thomas_shape_selected);
-            } else {
-                helper.setImageResource(R.id.thomas_iv_item_state, R.drawable.thomas_shape_unselected);
-            }
+            notifyDataSetChanged();
         }
     }
 }

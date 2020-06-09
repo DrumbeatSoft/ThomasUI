@@ -15,16 +15,16 @@ import com.thomas.core.utils.ActivityUtils;
 import com.thomas.core.utils.ScreenUtils;
 import com.thomas.core.utils.TimeUtils;
 import com.thomas.core.utils.ToastUtils;
-import com.thomas.ui.ThomasBottomSheet;
-import com.thomas.ui.ThomasDialog;
 import com.thomas.ui.ThomasTitleBar;
-import com.thomas.ui.ThomasWindow;
 import com.thomas.ui.demo.R;
 import com.thomas.ui.demo.adapter.ItemAdapter;
 import com.thomas.ui.demo.base.DemoActivity;
 import com.thomas.ui.demo.entity.MenuBean;
 import com.thomas.ui.listener.OnDateClickListener;
 import com.thomas.ui.listener.OnSingleClickListener;
+import com.thomas.ui.quick.ThomasBottomSheet;
+import com.thomas.ui.quick.ThomasDateDialog;
+import com.thomas.ui.quick.ThomasMessageDialog;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -58,7 +58,7 @@ public class BottomSheetActivity extends DemoActivity {
             }
 
             if (action == ThomasTitleBar.ACTION_RIGHT_TEXT) {
-                ThomasDialog.showTips(mActivity,
+                ThomasMessageDialog.showSimpleMessage(mActivity,
                         "切换屏幕方向，来看一下弹窗的展示效果",
                         "切换", () -> {
 
@@ -69,12 +69,12 @@ public class BottomSheetActivity extends DemoActivity {
                             }
                         });
 
-                ThomasWindow.showMenu(thomasTitleBar.getRightTextView(), gridDatas, new OnSingleClickListener() {
-                    @Override
-                    public void onClick(int position, String key, String value) {
-                        ToastUtils.showLong("点击了第" + position + "条数据，key=" + key + ",value=" + value);
-                    }
-                });
+//                ThomasWindow.showMenu(thomasTitleBar.getRightTextView(), gridDatas, new OnSingleClickListener() {
+//                    @Override
+//                    public void onClick(int position, String key, String value) {
+//                        ToastUtils.showLong("点击了第" + position + "条数据，key=" + key + ",value=" + value);
+//                    }
+//                });
             }
         });
 
@@ -142,7 +142,7 @@ public class BottomSheetActivity extends DemoActivity {
                     });
                 }
                 if (position == 5) {
-                    ThomasBottomSheet.showBottomDate(mActivity, "测试标题", 2000, 2100, TimeUtils.string2Date("2020-02-02", "yyyy-MM-dd"), true, new OnDateClickListener() {
+                    ThomasDateDialog.showDateBottom(mActivity, "测试标题", 2000, 2100, TimeUtils.string2Date("2020-02-02", "yyyy-MM-dd"), true, new OnDateClickListener() {
 
                         @Override
                         public void onClick(Date selectDate) {
@@ -151,7 +151,7 @@ public class BottomSheetActivity extends DemoActivity {
                     });
                 }
                 if (position == 6) {
-                    ThomasBottomSheet.showBottomDate(mActivity, 2000, 2100, TimeUtils.string2Date("2020-02-02", "yyyy-MM-dd"), false, new OnDateClickListener() {
+                    ThomasDateDialog.showDateBottom(mActivity, 2000, 2100, TimeUtils.string2Date("2020-02-02", "yyyy-MM-dd"), false, new OnDateClickListener() {
 
                         @Override
                         public void onClick(Date selectDate) {

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@drawable/thomas_r8_selector"
+    android:background="?android:attr/selectableItemBackground"
     android:padding="@dimen/thomasNormalPadding"
     tools:ignore="RtlCompat">
 

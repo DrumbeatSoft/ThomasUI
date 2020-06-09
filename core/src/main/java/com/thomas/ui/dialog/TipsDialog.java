@@ -37,7 +37,7 @@ public class TipsDialog extends BaseLazyPopupWindow {
             dismiss();
         }
     };
-    private int duration = 2000;
+    private int duration = 1500;
 
     private TipsDialog(Context context) {
         super(context);
@@ -125,6 +125,14 @@ public class TipsDialog extends BaseLazyPopupWindow {
     }
 
     @Override
+    public void onDestroy() {
+        if (handler.hasCallbacks(dismissRunnable)) {
+            handler.removeCallbacks(dismissRunnable);
+        }
+        super.onDestroy();
+    }
+
+    @Override
     protected Animation onCreateShowAnimation() {
         return getDefaultScaleAnimation();
     }
@@ -134,10 +142,11 @@ public class TipsDialog extends BaseLazyPopupWindow {
         return getDefaultScaleAnimation(false);
     }
 
+
     @Override
     public void showPopupWindow() {
         super.showPopupWindow();
-        setBackPressEnable(false);
+        setBackPressEnable(true);
         setOutSideTouchable(false);
         setOutSideDismiss(false);
         setPopupGravity(Gravity.CENTER);
@@ -188,5 +197,4 @@ public class TipsDialog extends BaseLazyPopupWindow {
         }
 
     }
-
 }

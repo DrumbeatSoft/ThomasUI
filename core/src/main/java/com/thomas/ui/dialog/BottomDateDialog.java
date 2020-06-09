@@ -78,7 +78,7 @@ public class BottomDateDialog extends BaseLazyPopupWindow {
         tvDialogCancel.setText(getContext().getString(android.R.string.cancel));
         tvDialogOk.setText(getContext().getString(android.R.string.ok));
 
-
+        ClickHelper.applyPressedViewAlpha(tvDialogCancel, tvDialogOk);
         if (builder.hasDay) {
             wvDay.setVisibility(View.VISIBLE);
         } else {

@@ -23,7 +23,6 @@ public class MessageDialog extends BaseLazyPopupWindow {
     private AppCompatTextView tvDialogTitle, tvDialogContent, tvDialogCancel, tvDialogOk;
     private View viewDialogDivider;
     public static int TYPE_NORMAL_DIALOG = 0;
-    public static int TYPE_NO_TITLE = 1;
     public static int TYPE_ONLY_ONE_BUTTON = 2;
     private Builder builder;
 
@@ -57,18 +56,11 @@ public class MessageDialog extends BaseLazyPopupWindow {
         tvDialogOk = findViewById(R.id.thomas_btn_ok);
         viewDialogDivider = findViewById(R.id.thomas_divider_vertical);
         tvDialogCancel = findViewById(R.id.thomas_btn_cancel);
-        if (builder.dialogType == TYPE_NO_TITLE) {
-            tvDialogTitle.setVisibility(View.GONE);
-            tvDialogContent.setGravity(Gravity.LEFT | Gravity.CENTER_HORIZONTAL);
-        }
         if (builder.dialogType == TYPE_ONLY_ONE_BUTTON) {
             tvDialogCancel.setVisibility(View.GONE);
             viewDialogDivider.setVisibility(View.GONE);
-            tvDialogOk.setBackgroundResource(R.drawable.thomas_r8_bottom_selector);
-        } else {
-            tvDialogOk.setBackgroundResource(R.drawable.thomas_r8_bottom_right_selector);
-            tvDialogCancel.setBackgroundResource(R.drawable.thomas_r8_bottom_left_selector);
         }
+        ClickHelper.applyPressedViewAlpha(tvDialogCancel, tvDialogOk);
 
         if (TextUtils.isEmpty(builder.title)) {
             tvDialogTitle.setVisibility(View.GONE);

@@ -1,31 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@drawable/thomas_r8_selector"
+    android:background="?android:attr/selectableItemBackground"
     android:gravity="center"
     android:padding="@dimen/thomasNormalPadding">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/thomas_tv_item_name"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.AppCompatCheckedTextView
+        android:id="@+id/thomas_ctv_item_name"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/thomas_iv_item_state"
+        android:checkMark="@drawable/thomas_choice_selector"
         android:ellipsize="middle"
+        android:gravity="center_vertical"
         android:singleLine="true"
         android:textSize="@dimen/thomasContentSize"
         tools:text="选项一" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/thomas_iv_item_state"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        app:srcCompat="@drawable/thomas_shape_unselected" />
 </RelativeLayout>

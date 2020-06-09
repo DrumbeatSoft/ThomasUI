@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         tools:ignore="LockedOrientationActivity"
-        android:theme="@style/ThomasAppTheme">
+        android:theme="@style/ThomasUI">
         <activity android:name=".component.TitleBarActivity" />
         <activity android:name=".component.DialogActivity" />
         <activity android:name=".component.TipsActivity" />

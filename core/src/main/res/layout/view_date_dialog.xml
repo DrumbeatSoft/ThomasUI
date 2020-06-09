@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:background="@drawable/thomas_shape_r8_white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/thomasSmallPadding">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/thomas_tv_title"
@@ -13,11 +14,11 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingLeft="@dimen/thomasNormalPadding"
-        android:paddingTop="@dimen/thomasNormalPadding"
+        android:paddingTop="@dimen/thomasSmallPadding"
         android:paddingRight="@dimen/thomasNormalPadding"
-        android:paddingBottom="@dimen/thomasSmallPadding"
+        android:paddingBottom="@dimen/thomasNormalPadding"
         android:textColor="@color/thomasTitleTextColor"
-        android:textSize="@dimen/thomasTitleSize"
+        android:textSize="@dimen/thomasButtonSize"
         tools:text="标题" />
 
     <View
@@ -72,13 +73,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/thomas_r8_bottom_left_selector"
             android:gravity="center"
             android:maxLines="1"
             android:paddingStart="@dimen/thomasSmallPadding"
             android:paddingTop="@dimen/thomasNormalPadding"
             android:paddingEnd="@dimen/thomasSmallPadding"
-            android:paddingBottom="@dimen/thomasNormalPadding"
+            android:paddingBottom="@dimen/thomasSmallPadding"
             android:textColor="@color/thomasButtonTextColor"
             android:textSize="@dimen/thomasButtonSize"
             tools:text="取消" />
@@ -94,13 +94,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/thomas_r8_bottom_right_selector"
             android:gravity="center"
             android:maxLines="1"
             android:paddingStart="@dimen/thomasSmallPadding"
             android:paddingTop="@dimen/thomasNormalPadding"
             android:paddingEnd="@dimen/thomasSmallPadding"
-            android:paddingBottom="@dimen/thomasNormalPadding"
+            android:paddingBottom="@dimen/thomasSmallPadding"
             android:textColor="@color/thomasButtonTextColor"
             android:textSize="@dimen/thomasButtonSize"
             tools:text="确定" />

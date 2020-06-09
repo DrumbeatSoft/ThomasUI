@@ -22,7 +22,7 @@
         <attr name="bottomShadowHeight" format="dimension" />
 
         <!-- 左边视图类型 -->
-        <attr name="leftType">
+        <attr name="leftType" format="enum">
             <enum name="none" value="0" />
             <enum name="textView" value="1" />
             <enum name="imageButton" value="2" />
@@ -44,7 +44,7 @@
         <attr name="leftCustomView" format="reference" />
 
         <!-- 右边视图类型 -->
-        <attr name="rightType">
+        <attr name="rightType" format="enum">
             <enum name="none" value="0" />
             <enum name="textView" value="1" />
             <enum name="imageButton" value="2" />
@@ -62,13 +62,13 @@
         <attr name="rightCustomView" format="reference" />
 
         <!-- 中间视图类型 -->
-        <attr name="centerType">
+        <attr name="centerType" format="enum">
             <enum name="none" value="0" />
             <enum name="textView" value="1" />
             <enum name="searchView" value="2" />
             <enum name="customView" value="3" />
         </attr>
-        <attr name="centerSearchRightType">
+        <attr name="centerSearchRightType" format="enum">
             <enum name="voice" value="0" />
             <enum name="delete" value="1" />
         </attr>

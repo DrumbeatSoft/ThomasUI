@@ -2,35 +2,30 @@ package com.thomas.ui.entity;
 
 
 import androidx.annotation.DrawableRes;
-import androidx.annotation.NonNull;
 
-public abstract class AbsKV implements Cloneable {
+public abstract class AbsKV {
 
-    private boolean isChoice = false;
 
+    /**
+     * 获取Name(显示在前端的)
+     *
+     * @return
+     */
     public abstract String getKey();
 
+    /**
+     * 获取Value(保存在后端的)
+     *
+     * @return
+     */
     public abstract String getValue();
 
-    public abstract @DrawableRes int getResId();
-
-    public void setChoice(boolean isChoice) {
-        this.isChoice = isChoice;
-    }
-
-    public boolean getChoice() {
-        return isChoice;
-    }
-
-    @NonNull
-    @Override
-    public Object clone() {
-        try {
-            return super.clone();
-        } catch (CloneNotSupportedException e) {
-            return null;
-        }
-    }
-
+    /**
+     * 获取图标资源
+     *
+     * @return
+     */
+    public abstract @DrawableRes
+    int getResId();
 
 }

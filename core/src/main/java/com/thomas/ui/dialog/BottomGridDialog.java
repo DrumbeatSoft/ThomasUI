@@ -88,7 +88,7 @@ public class BottomGridDialog extends BaseLazyPopupWindow {
             viewDialogDividerCancel.setVisibility(View.VISIBLE);
         } else {
             tvDialogCancel.setVisibility(View.GONE);
-            viewDialogDividerCancel.setVisibility(View.GONE);
+            viewDialogDividerCancel.setVisibility(View.INVISIBLE);
         }
 
         tvDialogCancel.setText(TextUtils.isEmpty(builder.cancel) ? getContext().getString(android.R.string.cancel) : builder.cancel);
@@ -102,7 +102,7 @@ public class BottomGridDialog extends BaseLazyPopupWindow {
 
         rvDialogContent.setAdapter(adapter);
         rvDialogContent.setLayoutManager(new GridLayoutManager(getContext(), 4));
-        adapter.setNewData(builder.items);
+        adapter.setNewInstance(builder.items);
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {

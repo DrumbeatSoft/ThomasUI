@@ -13,12 +13,12 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.thomas.core.utils.ActivityUtils;
 import com.thomas.core.utils.ScreenUtils;
-import com.thomas.ui.ThomasDialog;
-import com.thomas.ui.ThomasTips;
 import com.thomas.ui.ThomasTitleBar;
 import com.thomas.ui.demo.R;
 import com.thomas.ui.demo.adapter.ItemAdapter;
 import com.thomas.ui.demo.base.DemoActivity;
+import com.thomas.ui.quick.ThomasMessageDialog;
+import com.thomas.ui.quick.ThomasTipsDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +48,7 @@ public class TipsActivity extends DemoActivity {
             }
 
             if (action == ThomasTitleBar.ACTION_RIGHT_TEXT) {
-                ThomasDialog.showTips(mActivity,
+                ThomasMessageDialog.showSimpleMessage(mActivity,
                         "切换屏幕方向，来看一下弹窗的展示效果",
                         "切换", () -> {
 
@@ -80,41 +80,41 @@ public class TipsActivity extends DemoActivity {
             @Override
             public void onItemClick(@NonNull BaseQuickAdapter adapter, @NonNull View view, int position) {
                 if (position == 0) {
-                    ThomasTips.showSuccess(mActivity);
+                    ThomasTipsDialog.showSuccess(mActivity);
                 }
                 if (position == 1) {
-                    ThomasTips.showSuccess(mActivity, "自定义文字");
+                    ThomasTipsDialog.showSuccess(mActivity, "自定义文字");
                 }
                 if (position == 2) {
-                    ThomasTips.showError(mActivity);
+                    ThomasTipsDialog.showError(mActivity);
                 }
                 if (position == 3) {
-                    ThomasTips.showError(mActivity, "自定义文字");
+                    ThomasTipsDialog.showError(mActivity, "自定义文字");
                 }
                 if (position == 4) {
-                    ThomasTips.showWarn(mActivity);
+                    ThomasTipsDialog.showWarn(mActivity);
                 }
                 if (position == 5) {
-                    ThomasTips.showWarn(mActivity, "自定义文字");
+                    ThomasTipsDialog.showWarn(mActivity, "自定义文字");
                 }
                 if (position == 6) {
-                    ThomasTips.showLoading(mActivity);
+                    ThomasTipsDialog.showLoading(mActivity);
                 }
                 if (position == 7) {
-                    ThomasTips.showLoading(mActivity, "自定义文字");
+                    ThomasTipsDialog.showLoading(mActivity, "自定义文字");
                 }
                 if (position == 8) {
-                    ThomasTips.showCustom(mActivity, R.mipmap.ic_launcher, "自定义文字");
+                    ThomasTipsDialog.showCustom(mActivity, R.mipmap.ic_launcher, "自定义文字");
                 }
                 if (position == 9) {
-                    ThomasTips.showCustom(mActivity, R.mipmap.ic_launcher);
+                    ThomasTipsDialog.showCustom(mActivity, R.mipmap.ic_launcher);
                 }
-                if (position==10){
-                    ThomasTips.showLoading(mActivity, "自定义文字");
+                if (position == 10) {
+                    ThomasTipsDialog.showLoading(mActivity, "自定义文字");
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            ThomasTips.showWarn(mActivity);
+                            ThomasTipsDialog.showWarn(mActivity);
                         }
                     }, 500);
                 }

@@ -1,4 +1,4 @@
-package com.thomas.ui;
+package com.thomas.ui.quick;
 
 import android.content.Context;
 
@@ -12,30 +12,35 @@ import static com.thomas.ui.dialog.TipsDialog.TYPE_LOADING;
 import static com.thomas.ui.dialog.TipsDialog.TYPE_SUCCESS;
 import static com.thomas.ui.dialog.TipsDialog.TYPE_WARN;
 
-public class ThomasTips {
+public class ThomasTipsDialog {
 
     /**
-     * 显示完成状态弹窗
+     * 显示成功状态弹窗
      */
     public static void showSuccess(Context context) {
         showSuccess(context, "");
-
     }
-
+    /**
+     * 显示错误状态弹窗
+     */
     public static void showError(Context context) {
         showError(context, "");
     }
-
+    /**
+     * 显示警告状态弹窗
+     */
     public static void showWarn(Context context) {
         showWarn(context, "");
     }
-
+    /**
+     * 显示加载状态弹窗
+     */
     public static void showLoading(Context context) {
         showLoading(context, "");
     }
 
     /**
-     * 显示完成状态弹窗，带自定义文字
+     * 显示成功状态弹窗，带自定义文字
      *
      * @param msg 自定义文字
      */

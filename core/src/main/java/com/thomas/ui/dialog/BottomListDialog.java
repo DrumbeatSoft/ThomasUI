@@ -97,13 +97,12 @@ public class BottomListDialog extends BaseLazyPopupWindow {
         });
 
 
-
         DialogMenuAdapter adapter = new DialogMenuAdapter(builder.gravity);
 
         rvDialogContent.setAdapter(adapter);
         rvDialogContent.setLayoutManager(RecyclerViewHelper.getDefaultLayoutManager(getContext()));
         rvDialogContent.addItemDecoration(RecyclerViewHelper.getDefaultItemDecoration(getContext()));
-        adapter.setNewData(builder.items);
+        adapter.setNewInstance(builder.items);
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {

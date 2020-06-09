@@ -5,5 +5,5 @@ import com.thomas.ui.entity.AbsKV;
 import java.util.List;
 
 public interface OnMultipleClickListener<T extends AbsKV> {
-    void onClick(List<T> selectItems);
+    void onClick(List<Integer> positions, List<T> selectItems);
 }

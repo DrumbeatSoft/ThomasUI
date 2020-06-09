@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/thomas_r8_selector"
+    android:background="?android:attr/selectableItemBackground"
     android:gravity="center"
     android:orientation="horizontal"
-    android:padding="@dimen/thomasSmallPadding">
+    android:padding="@dimen/thomasNormalPadding">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/thomas_iv_item_res"
@@ -24,6 +24,6 @@
         android:ellipsize="middle"
         android:gravity="center_vertical"
         android:singleLine="true"
-        android:textSize="@dimen/thomasSmallSize"
+        android:textSize="@dimen/thomasContentSize"
         tools:text="选项一" />
 </androidx.appcompat.widget.LinearLayoutCompat>
