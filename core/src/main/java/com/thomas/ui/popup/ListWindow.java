@@ -202,6 +202,7 @@ public class ListWindow<T extends AbsKV> extends BaseLazyPopupWindow {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    mSelectSet.clear();
                     updateData(menuAdapter, filter(builder.items, etDialogSearch.getEditableText().toString()));
                 }
                 return false;
@@ -221,6 +222,7 @@ public class ListWindow<T extends AbsKV> extends BaseLazyPopupWindow {
 
             @Override
             public void afterTextChanged(Editable s) {
+                mSelectSet.clear();
                 updateData(menuAdapter, filter(builder.items, etDialogSearch.getEditableText().toString()));
             }
         });
@@ -228,6 +230,7 @@ public class ListWindow<T extends AbsKV> extends BaseLazyPopupWindow {
         btnDialogSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mSelectSet.clear();
                 if (builder.onSearchClickListener != null) {
                     builder.onSearchClickListener.onClick(etDialogSearch.getEditableText().toString(), menuAdapter);
                 } else {
