@@ -19,6 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import razerdp.basepopup.BaseLazyPopupWindow;
+import razerdp.util.animation.AlphaConfig;
+import razerdp.util.animation.AnimationHelper;
+import razerdp.util.animation.ScaleConfig;
 
 public class PhotoPreview extends BaseLazyPopupWindow {
 
@@ -70,17 +73,17 @@ public class PhotoPreview extends BaseLazyPopupWindow {
     @Override
     public void showPopupWindow() {
         super.showPopupWindow();
-        setPopupWindowFullScreen(true);
+        setOverlayStatusbar(true);
     }
 
     @Override
     protected Animation onCreateShowAnimation() {
-        return getDefaultScaleAnimation();
+        return AnimationHelper.asAnimation().withScale(ScaleConfig.CENTER).toShow();
     }
 
     @Override
     protected Animation onCreateDismissAnimation() {
-        return getDefaultAlphaAnimation(false);
+        return AnimationHelper.asAnimation().withAlpha(AlphaConfig.OUT).toDismiss();
     }
 
 

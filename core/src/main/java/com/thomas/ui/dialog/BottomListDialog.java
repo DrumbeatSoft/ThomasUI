@@ -23,6 +23,8 @@ import com.thomas.ui.listener.OnSingleClickListener;
 import java.util.List;
 
 import razerdp.basepopup.BaseLazyPopupWindow;
+import razerdp.util.animation.AnimationHelper;
+import razerdp.util.animation.TranslationConfig;
 
 public class BottomListDialog extends BaseLazyPopupWindow {
 
@@ -116,15 +118,14 @@ public class BottomListDialog extends BaseLazyPopupWindow {
 
     }
 
-
     @Override
     protected Animation onCreateShowAnimation() {
-        return getTranslateVerticalAnimation(1f, 0, 360);
+        return AnimationHelper.asAnimation().withTranslation(TranslationConfig.FROM_BOTTOM).toShow();
     }
 
     @Override
     protected Animation onCreateDismissAnimation() {
-        return getTranslateVerticalAnimation(0, 1f, 360);
+        return AnimationHelper.asAnimation().withTranslation(TranslationConfig.TO_BOTTOM).toDismiss();
     }
 
 

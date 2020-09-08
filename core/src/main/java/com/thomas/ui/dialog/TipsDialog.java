@@ -16,6 +16,8 @@ import com.thomas.ui.R;
 import com.thomas.ui.helper.ScreenHelper;
 
 import razerdp.basepopup.BaseLazyPopupWindow;
+import razerdp.util.animation.AnimationHelper;
+import razerdp.util.animation.ScaleConfig;
 
 public class TipsDialog extends BaseLazyPopupWindow {
 
@@ -134,12 +136,12 @@ public class TipsDialog extends BaseLazyPopupWindow {
 
     @Override
     protected Animation onCreateShowAnimation() {
-        return getDefaultScaleAnimation();
+        return AnimationHelper.asAnimation().withScale(ScaleConfig.CENTER).toShow();
     }
 
     @Override
     protected Animation onCreateDismissAnimation() {
-        return getDefaultScaleAnimation(false);
+        return AnimationHelper.asAnimation().withScale(ScaleConfig.CENTER).toDismiss();
     }
 
 
@@ -156,7 +158,7 @@ public class TipsDialog extends BaseLazyPopupWindow {
         }
         if (handler.hasCallbacks(dismissRunnable)) {
             handler.removeCallbacks(dismissRunnable);
-            dismissWithOutAnimate();
+            dismiss(false);
         }
         handler.postDelayed(dismissRunnable, duration);
     }

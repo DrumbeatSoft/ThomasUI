@@ -32,7 +32,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/progress_circular"
         android:gravity="center"
-        android:maxLines="2"
         android:padding="@dimen/thomasSmallPadding"
         android:text="@string/thomasDefaultStatusLoading"
         android:textColor="@android:color/white"

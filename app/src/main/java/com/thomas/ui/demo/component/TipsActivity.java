@@ -104,7 +104,7 @@ public class TipsActivity extends DemoActivity {
                     ThomasTipsDialog.showLoading(mActivity, "自定义文字");
                 }
                 if (position == 8) {
-                    ThomasTipsDialog.showCustom(mActivity, R.mipmap.ic_launcher, "自定义文字");
+                    ThomasTipsDialog.showCustom(mActivity, R.mipmap.ic_launcher, "自定义文字自定义文字自定义文字自定义文字自定义文字自定义文字");
                 }
                 if (position == 9) {
                     ThomasTipsDialog.showCustom(mActivity, R.mipmap.ic_launcher);

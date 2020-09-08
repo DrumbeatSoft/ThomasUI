@@ -21,6 +21,8 @@ import java.util.Date;
 import java.util.List;
 
 import razerdp.basepopup.BaseLazyPopupWindow;
+import razerdp.util.animation.AnimationHelper;
+import razerdp.util.animation.ScaleConfig;
 
 public class DateDialog extends BaseLazyPopupWindow {
 
@@ -190,12 +192,12 @@ public class DateDialog extends BaseLazyPopupWindow {
 
     @Override
     protected Animation onCreateShowAnimation() {
-        return getDefaultScaleAnimation();
+        return AnimationHelper.asAnimation().withScale(ScaleConfig.CENTER).toShow();
     }
 
     @Override
     protected Animation onCreateDismissAnimation() {
-        return getDefaultScaleAnimation(false);
+        return AnimationHelper.asAnimation().withScale(ScaleConfig.CENTER).toDismiss();
     }
 
 

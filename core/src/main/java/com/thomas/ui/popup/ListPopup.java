@@ -21,6 +21,9 @@ import com.thomas.ui.listener.OnSingleClickListener;
 import java.util.List;
 
 import razerdp.basepopup.BaseLazyPopupWindow;
+import razerdp.util.animation.AlphaConfig;
+import razerdp.util.animation.AnimationHelper;
+import razerdp.util.animation.ScaleConfig;
 
 /**
  * 菜单popupWindow
@@ -91,20 +94,16 @@ public class ListPopup extends BaseLazyPopupWindow {
 
     @Override
     protected Animation onCreateShowAnimation() {
-        AnimationSet set = new AnimationSet(true);
-        set.setInterpolator(new DecelerateInterpolator());
-        set.addAnimation(getScaleAnimation(0, 1, 0, 1, Animation.RELATIVE_TO_SELF, 1, Animation.RELATIVE_TO_SELF, 0));
-        set.addAnimation(getDefaultAlphaAnimation());
-        return set;
+        return AnimationHelper.asAnimation().withScale(ScaleConfig.RIGHT_TO_LEFT)
+                .withScale(ScaleConfig.TOP_TO_BOTTOM)
+                .withAlpha(AlphaConfig.IN).toShow();
     }
 
     @Override
     protected Animation onCreateDismissAnimation() {
-        AnimationSet set = new AnimationSet(true);
-        set.setInterpolator(new DecelerateInterpolator());
-        set.addAnimation(getScaleAnimation(1, 0, 1, 0, Animation.RELATIVE_TO_SELF, 1, Animation.RELATIVE_TO_SELF, 0));
-        set.addAnimation(getDefaultAlphaAnimation(false));
-        return set;
+        return AnimationHelper.asAnimation().withScale(ScaleConfig.LEFT_TO_RIGHT)
+                .withScale(ScaleConfig.BOTTOM_TO_TOP)
+                .withAlpha(AlphaConfig.OUT).toDismiss();
     }
 
     public static class Builder<T extends AbsKV> {

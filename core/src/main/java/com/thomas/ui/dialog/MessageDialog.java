@@ -14,6 +14,8 @@ import com.thomas.ui.helper.ScreenHelper;
 import com.thomas.ui.listener.OnDialogClickListener;
 
 import razerdp.basepopup.BaseLazyPopupWindow;
+import razerdp.util.animation.AnimationHelper;
+import razerdp.util.animation.ScaleConfig;
 
 /**
  * 消息类型的居中弹窗，最多带有标题，内容，确定按钮，取消按钮内容
@@ -97,15 +99,14 @@ public class MessageDialog extends BaseLazyPopupWindow {
         return createPopupById(R.layout.view_message_dialog);
     }
 
-
     @Override
     protected Animation onCreateShowAnimation() {
-        return getDefaultScaleAnimation();
+        return AnimationHelper.asAnimation().withScale(ScaleConfig.CENTER).toShow();
     }
 
     @Override
     protected Animation onCreateDismissAnimation() {
-        return getDefaultScaleAnimation(false);
+        return AnimationHelper.asAnimation().withScale(ScaleConfig.CENTER).toDismiss();
     }
 
     @Override

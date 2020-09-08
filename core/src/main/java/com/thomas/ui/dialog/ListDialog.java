@@ -29,6 +29,8 @@ import java.util.List;
 import java.util.Map;
 
 import razerdp.basepopup.BaseLazyPopupWindow;
+import razerdp.util.animation.AnimationHelper;
+import razerdp.util.animation.ScaleConfig;
 
 /**
  * 菜单居中弹窗，有纯菜单模式，单选模式，多选模式。
@@ -121,6 +123,10 @@ public class ListDialog<T extends AbsKV> extends BaseLazyPopupWindow {
                 } else {
                     builder.onSingleClickListener.onClick(selectedPositions.get(0), selectItems.get(0).getKey(), selectItems.get(0).getValue());
                 }
+            } else {
+                if (builder.dialogType == TYPE_MULTIPLE_MENU && builder.onMultipleClickListener != null) {
+                    builder.onMultipleClickListener.onClick(selectedPositions, selectItems);
+                }
             }
             dismiss();
         });
@@ -171,14 +177,13 @@ public class ListDialog<T extends AbsKV> extends BaseLazyPopupWindow {
 
     @Override
     protected Animation onCreateShowAnimation() {
-        return getDefaultScaleAnimation();
+        return AnimationHelper.asAnimation().withScale(ScaleConfig.CENTER).toShow();
     }
 
     @Override
     protected Animation onCreateDismissAnimation() {
-        return getDefaultScaleAnimation(false);
+        return AnimationHelper.asAnimation().withScale(ScaleConfig.CENTER).toDismiss();
     }
-
 
     @Override
     public void showPopupWindow() {

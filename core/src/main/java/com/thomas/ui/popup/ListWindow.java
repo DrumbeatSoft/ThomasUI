@@ -40,6 +40,8 @@ import java.util.regex.Pattern;
 
 import razerdp.basepopup.BaseLazyPopupWindow;
 import razerdp.util.KeyboardUtils;
+import razerdp.util.animation.AnimationHelper;
+import razerdp.util.animation.ScaleConfig;
 
 public class ListWindow<T extends AbsKV> extends BaseLazyPopupWindow {
     private Builder builder;
@@ -108,12 +110,12 @@ public class ListWindow<T extends AbsKV> extends BaseLazyPopupWindow {
 
     @Override
     protected Animation onCreateShowAnimation() {
-        return getDefaultScaleAnimation();
+        return AnimationHelper.asAnimation().withScale(ScaleConfig.CENTER).toShow();
     }
 
     @Override
     protected Animation onCreateDismissAnimation() {
-        return getDefaultScaleAnimation(false);
+        return AnimationHelper.asAnimation().withScale(ScaleConfig.CENTER).toDismiss();
     }
 
 
@@ -160,6 +162,10 @@ public class ListWindow<T extends AbsKV> extends BaseLazyPopupWindow {
                     builder.onMultipleClickListener.onClick(selectedPositions, selectItems);
                 } else {
                     builder.onSingleClickListener.onClick(selectedPositions.get(0), selectItems.get(0).getKey(), selectItems.get(0).getValue());
+                }
+            } else {
+                if (builder.dialogType == TYPE_MULTIPLE_MENU && builder.onMultipleClickListener != null) {
+                    builder.onMultipleClickListener.onClick(selectedPositions, selectItems);
                 }
             }
             dismiss();
