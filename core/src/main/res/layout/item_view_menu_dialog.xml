@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:checkMark="@drawable/thomas_choice_selector"
+        android:checkMark="@drawable/thomas_single_choice_selector"
         android:ellipsize="middle"
         android:gravity="center_vertical"
         android:singleLine="true"

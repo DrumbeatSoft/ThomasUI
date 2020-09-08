@@ -266,8 +266,10 @@ public class ListDialog<T extends AbsKV> extends BaseLazyPopupWindow {
             AppCompatCheckedTextView ctv = helper.findView(R.id.thomas_ctv_item_name);
             if (dialogType == TYPE_ONLY_MENU) {
                 ctv.setCheckMarkDrawable(null);
+            } else if (dialogType == TYPE_SINGLE_MENU) {
+                ctv.setCheckMarkDrawable(R.drawable.thomas_single_choice_selector);
             } else {
-                ctv.setCheckMarkDrawable(R.drawable.thomas_choice_selector);
+                ctv.setCheckMarkDrawable(R.drawable.thomas_multiple_choice_selector);
             }
             ctv.setText(item.getKey());
             ctv.setChecked(mSelectSet.containsKey(helper.getAdapterPosition()));

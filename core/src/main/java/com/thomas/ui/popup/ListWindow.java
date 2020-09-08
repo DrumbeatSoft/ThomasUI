@@ -172,7 +172,7 @@ public class ListWindow<T extends AbsKV> extends BaseLazyPopupWindow {
         });
 
 
-        DialogMenuAdapter<T> menuAdapter = new DialogMenuAdapter();
+        DialogMenuAdapter<T> menuAdapter = new DialogMenuAdapter(builder.dialogType);
 
         rvDialogContent.setAdapter(menuAdapter);
         rvDialogContent.setLayoutManager(RecyclerViewHelper.getDefaultLayoutManager(getContext()));
@@ -347,15 +347,23 @@ public class ListWindow<T extends AbsKV> extends BaseLazyPopupWindow {
 
     private class DialogMenuAdapter<T extends AbsKV> extends BaseQuickAdapter<T, BaseViewHolder> {
 
-        public DialogMenuAdapter() {
+        private int dialogType;
+
+        public DialogMenuAdapter(int dialogType) {
             super(R.layout.item_view_menu_dialog);
+            this.dialogType = dialogType;
         }
 
         @Override
         protected void convert(@NonNull BaseViewHolder helper, T item) {
             AppCompatCheckedTextView ctv = helper.findView(R.id.thomas_ctv_item_name);
 
-            ctv.setCheckMarkDrawable(R.drawable.thomas_choice_selector);
+            if (dialogType == TYPE_SINGLE_MENU) {
+                ctv.setCheckMarkDrawable(R.drawable.thomas_single_choice_selector);
+            } else {
+                ctv.setCheckMarkDrawable(R.drawable.thomas_multiple_choice_selector);
+            }
+
             ctv.setText(item.getKey());
             ctv.setChecked(mSelectSet.containsKey(helper.getAdapterPosition()));
         }
