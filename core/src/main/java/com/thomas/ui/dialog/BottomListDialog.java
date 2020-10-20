@@ -28,9 +28,9 @@ import razerdp.util.animation.TranslationConfig;
 
 public class BottomListDialog extends BaseLazyPopupWindow {
 
-    private AppCompatTextView tvDialogTitle, tvDialogCancel;
+    private AppCompatTextView tvDialogTitle;
     private RecyclerView rvDialogContent;
-    private View viewDialogDividerTitle, viewDialogDividerCancel;
+    private View viewDialogDividerTitle;
     private Builder builder;
 
     private BottomListDialog(Context context) {
@@ -40,7 +40,10 @@ public class BottomListDialog extends BaseLazyPopupWindow {
     private BottomListDialog(Context context, Builder builder) {
         this(context);
         this.builder = builder;
-
+        setAlignBackground(false);
+        setClipChildren(false);
+        setOutSideTouchable(false);
+        setPopupGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
         if (ScreenHelper.isLandscape(context)) {
             //横屏
             setMaxHeight((ScreenHelper.getScreenHeight(context) / 3) * 2);
@@ -55,26 +58,15 @@ public class BottomListDialog extends BaseLazyPopupWindow {
     }
 
     @Override
-    public void showPopupWindow() {
-        super.showPopupWindow();
-        setAlignBackground(false);
-        setClipChildren(false);
-        setPopupGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
-    }
-
-    @Override
     public View onCreateContentView() {
         return createPopupById(R.layout.view_bottom_list_dialog);
     }
 
-
     @Override
     public void onViewCreated(View contentView) {
         tvDialogTitle = findViewById(R.id.thomas_tv_title);
-        tvDialogCancel = findViewById(R.id.thomas_btn_cancel);
         rvDialogContent = findViewById(R.id.thomas_rv_content);
         viewDialogDividerTitle = findViewById(R.id.thomas_divider_title);
-        viewDialogDividerCancel = findViewById(R.id.thomas_divider_cancel);
         if (TextUtils.isEmpty(builder.title)) {
             tvDialogTitle.setVisibility(View.GONE);
             viewDialogDividerTitle.setVisibility(View.GONE);
@@ -83,21 +75,6 @@ public class BottomListDialog extends BaseLazyPopupWindow {
             viewDialogDividerTitle.setVisibility(View.VISIBLE);
             tvDialogTitle.setText(builder.title);
         }
-
-        if (builder.showCancel) {
-            tvDialogCancel.setVisibility(View.VISIBLE);
-            viewDialogDividerCancel.setVisibility(View.VISIBLE);
-        } else {
-            tvDialogCancel.setVisibility(View.GONE);
-            viewDialogDividerCancel.setVisibility(View.GONE);
-        }
-
-        tvDialogCancel.setText(TextUtils.isEmpty(builder.cancel) ? getContext().getString(android.R.string.cancel) : builder.cancel);
-
-        ClickHelper.applySingleDebouncing(tvDialogCancel, v -> {
-            dismiss();
-        });
-
 
         DialogMenuAdapter adapter = new DialogMenuAdapter(builder.gravity);
 
@@ -115,7 +92,12 @@ public class BottomListDialog extends BaseLazyPopupWindow {
                 dismiss();
             }
         });
-
+        ClickHelper.applyGlobalDebouncing(contentView, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
     }
 
     @Override
@@ -131,10 +113,9 @@ public class BottomListDialog extends BaseLazyPopupWindow {
 
     public static class Builder<T extends AbsKV> {
         private Context context;
-        private String title, cancel;
+        private String title;
         private int gravity = Gravity.CENTER;
         private List<T> items;
-        private boolean showCancel;
         private OnSingleClickListener onSingleClickListener;
 
         public Builder(Context context) {
@@ -146,18 +127,8 @@ public class BottomListDialog extends BaseLazyPopupWindow {
             return this;
         }
 
-        public Builder setCancel(String cancel) {
-            this.cancel = cancel;
-            return this;
-        }
-
         public Builder setGravity(int gravity) {
             this.gravity = gravity;
-            return this;
-        }
-
-        public Builder setShowCancel(boolean showCancel) {
-            this.showCancel = showCancel;
             return this;
         }
 

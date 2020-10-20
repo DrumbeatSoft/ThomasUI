@@ -79,16 +79,14 @@ public class BottomSheetActivity extends DemoActivity {
         });
 
         datas.add("弹出底部列表\n(居左显示)");
-        datas.add("弹出底部列表\n(多数据)");
+        datas.add("弹出底部列表\n(居中显示)");
         datas.add("弹出底部列表\n(带标题)");
-        datas.add("弹出底部列表\n(带取消)");
-        datas.add("弹出底部列表\n(带标题和取消)");
+        datas.add("弹出底部列表\n(多数据)");
+        datas.add("弹出底部列表\n(带标题多数据)");
         datas.add("弹出底部时间选择框\n(带日选项和标题)");
         datas.add("弹出底部时间选择框\n(不带日选项和标题)");
-        datas.add("弹出底部宫格\n(不带标题和取消)");
-        datas.add("弹出底部宫格\n(带取消)");
-        datas.add("弹出底部宫格\n(带标题)");
-        datas.add("弹出底部宫格\n(带标题和取消)");
+        datas.add("弹出底部宫格\n(默认每行4个)");
+        datas.add("弹出底部宫格\n(自定义行条目数)");
 
         adapter = new ItemAdapter(datas);
         rvBottomSheet.setLayoutManager(new GridLayoutManager(mActivity, 2));
@@ -104,8 +102,29 @@ public class BottomSheetActivity extends DemoActivity {
 
                         }
                     });
+                    return;
                 }
                 if (position == 1) {
+                    ThomasBottomSheet.showBottomSheetNormal(mActivity, gridDatas, new OnSingleClickListener() {
+                        @Override
+                        public void onClick(int position, String key, String value) {
+                            ToastUtils.showLong("点击了第" + position + "条数据，key=" + key + ",value=" + value);
+
+                        }
+                    });
+                    return;
+                }
+                if (position == 2) {
+                    ThomasBottomSheet.showBottomSheetWithTitle(mActivity, "测试标题", gridDatas, new OnSingleClickListener() {
+                        @Override
+                        public void onClick(int position, String key, String value) {
+                            ToastUtils.showLong("点击了第" + position + "条数据，key=" + key + ",value=" + value);
+
+                        }
+                    });
+                    return;
+                }
+                if (position == 3) {
                     ThomasBottomSheet.showBottomSheetNormal(mActivity, manyDatas, new OnSingleClickListener() {
                         @Override
                         public void onClick(int position, String key, String value) {
@@ -113,8 +132,9 @@ public class BottomSheetActivity extends DemoActivity {
 
                         }
                     });
+                    return;
                 }
-                if (position == 2) {
+                if (position == 4) {
                     ThomasBottomSheet.showBottomSheetWithTitle(mActivity, "测试标题", manyDatas, new OnSingleClickListener() {
                         @Override
                         public void onClick(int position, String key, String value) {
@@ -122,24 +142,7 @@ public class BottomSheetActivity extends DemoActivity {
 
                         }
                     });
-                }
-                if (position == 3) {
-                    ThomasBottomSheet.showBottomSheetWithCancel(mActivity, "取消文字", manyDatas, new OnSingleClickListener() {
-                        @Override
-                        public void onClick(int position, String key, String value) {
-                            ToastUtils.showLong("点击了第" + position + "条数据，key=" + key + ",value=" + value);
-
-                        }
-                    });
-                }
-                if (position == 4) {
-                    ThomasBottomSheet.showBottomSheetAll(mActivity, "测试标题", "取消文字", manyDatas, new OnSingleClickListener() {
-                        @Override
-                        public void onClick(int position, String key, String value) {
-                            ToastUtils.showLong("点击了第" + position + "条数据，key=" + key + ",value=" + value);
-
-                        }
-                    });
+                    return;
                 }
                 if (position == 5) {
                     ThomasDateDialog.showDateBottom(mActivity, "测试标题", 2000, 2100, TimeUtils.string2Date("2020-02-02", "yyyy-MM-dd"), true, new OnDateClickListener() {
@@ -149,6 +152,7 @@ public class BottomSheetActivity extends DemoActivity {
                             ToastUtils.showLong("选择了" + TimeUtils.date2String(selectDate, "yyyy-MM-dd"));
                         }
                     });
+                    return;
                 }
                 if (position == 6) {
                     ThomasDateDialog.showDateBottom(mActivity, 2000, 2100, TimeUtils.string2Date("2020-02-02", "yyyy-MM-dd"), false, new OnDateClickListener() {
@@ -158,38 +162,26 @@ public class BottomSheetActivity extends DemoActivity {
                             ToastUtils.showLong("选择了" + TimeUtils.date2String(selectDate, "yyyy-MM"));
                         }
                     });
+                    return;
                 }
                 if (position == 7) {
-                    ThomasBottomSheet.showBottomGridNormal(mActivity, gridDatas, new OnSingleClickListener() {
+                    ThomasBottomSheet.showBottomGrid(mActivity, gridDatas, new OnSingleClickListener() {
                         @Override
                         public void onClick(int position, String key, String value) {
                             ToastUtils.showLong("点击了第" + position + "条数据，key=" + key + ",value=" + value);
                         }
                     });
+                    return;
                 }
+
                 if (position == 8) {
-                    ThomasBottomSheet.showBottomGridWithCancel(mActivity, "取消文字", gridDatas, new OnSingleClickListener() {
+                    ThomasBottomSheet.showBottomGrid(mActivity,3, gridDatas, new OnSingleClickListener() {
                         @Override
                         public void onClick(int position, String key, String value) {
                             ToastUtils.showLong("点击了第" + position + "条数据，key=" + key + ",value=" + value);
                         }
                     });
-                }
-                if (position == 9) {
-                    ThomasBottomSheet.showBottomGridWithTitle(mActivity, "标题文字", gridDatas, new OnSingleClickListener() {
-                        @Override
-                        public void onClick(int position, String key, String value) {
-                            ToastUtils.showLong("点击了第" + position + "条数据，key=" + key + ",value=" + value);
-                        }
-                    });
-                }
-                if (position == 10) {
-                    ThomasBottomSheet.showBottomGridAll(mActivity, "标题文字", "取消文字", gridDatas, new OnSingleClickListener() {
-                        @Override
-                        public void onClick(int position, String key, String value) {
-                            ToastUtils.showLong("点击了第" + position + "条数据，key=" + key + ",value=" + value);
-                        }
-                    });
+                    return;
                 }
             }
         });

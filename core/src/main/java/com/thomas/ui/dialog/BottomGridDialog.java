@@ -1,13 +1,11 @@
 package com.thomas.ui.dialog;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,19 +26,20 @@ import razerdp.util.animation.TranslationConfig;
 
 public class BottomGridDialog extends BaseLazyPopupWindow {
 
-    private AppCompatTextView tvDialogTitle, tvDialogCancel;
     private RecyclerView rvDialogContent;
-    private View viewDialogDividerTitle, viewDialogDividerCancel;
     private Builder builder;
 
     private BottomGridDialog(Context context) {
         super(context);
     }
 
-    public BottomGridDialog(Context context, Builder builder) {
+    private BottomGridDialog(Context context, Builder builder) {
         this(context);
         this.builder = builder;
-
+        setAlignBackground(false);
+        setClipChildren(false);
+        setOutSideTouchable(false);
+        setPopupGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
         if (ScreenHelper.isLandscape(context)) {
             //横屏
             setMaxHeight((ScreenHelper.getScreenHeight(context) / 3) * 2);
@@ -59,51 +58,14 @@ public class BottomGridDialog extends BaseLazyPopupWindow {
         return createPopupById(R.layout.view_bottom_grid_dialog);
     }
 
-
-    @Override
-    public void showPopupWindow() {
-        super.showPopupWindow();
-        setAlignBackground(false);
-        setClipChildren(false);
-        setPopupGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
-    }
-
-
     @Override
     public void onViewCreated(View contentView) {
-        tvDialogTitle = findViewById(R.id.thomas_tv_title);
-        tvDialogCancel = findViewById(R.id.thomas_btn_cancel);
         rvDialogContent = findViewById(R.id.thomas_rv_content);
-        viewDialogDividerTitle = findViewById(R.id.thomas_divider_title);
-        viewDialogDividerCancel = findViewById(R.id.thomas_divider_cancel);
-        if (TextUtils.isEmpty(builder.title)) {
-            tvDialogTitle.setVisibility(View.GONE);
-            viewDialogDividerTitle.setVisibility(View.GONE);
-        } else {
-            tvDialogTitle.setVisibility(View.VISIBLE);
-            viewDialogDividerTitle.setVisibility(View.VISIBLE);
-            tvDialogTitle.setText(builder.title);
-        }
-
-        if (builder.showCancel) {
-            tvDialogCancel.setVisibility(View.VISIBLE);
-            viewDialogDividerCancel.setVisibility(View.VISIBLE);
-        } else {
-            tvDialogCancel.setVisibility(View.GONE);
-            viewDialogDividerCancel.setVisibility(View.INVISIBLE);
-        }
-
-        tvDialogCancel.setText(TextUtils.isEmpty(builder.cancel) ? getContext().getString(android.R.string.cancel) : builder.cancel);
-
-        ClickHelper.applySingleDebouncing(tvDialogCancel, v -> {
-            dismiss();
-        });
-
 
         DialogMenuAdapter adapter = new DialogMenuAdapter();
 
         rvDialogContent.setAdapter(adapter);
-        rvDialogContent.setLayoutManager(new GridLayoutManager(getContext(), 4));
+        rvDialogContent.setLayoutManager(new GridLayoutManager(getContext(), builder.spanCount == 0 ? 4 : builder.spanCount));
         adapter.setNewInstance(builder.items);
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -116,6 +78,12 @@ public class BottomGridDialog extends BaseLazyPopupWindow {
             }
         });
 
+        ClickHelper.applyGlobalDebouncing(contentView, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
     }
 
 
@@ -150,30 +118,13 @@ public class BottomGridDialog extends BaseLazyPopupWindow {
 
     public static class Builder<T extends AbsKV> {
         private Context context;
-        private String title, cancel;
+        private int spanCount;
         private List<T> items;
-        private boolean showCancel;
         private OnSingleClickListener onSingleClickListener;
 
         public Builder(Context context) {
             this.context = context;
         }
-
-        public Builder setTitle(String title) {
-            this.title = title;
-            return this;
-        }
-
-        public Builder setCancel(String cancel) {
-            this.cancel = cancel;
-            return this;
-        }
-
-        public Builder setShowCancel(boolean showCancel) {
-            this.showCancel = showCancel;
-            return this;
-        }
-
 
         public Builder setItems(List<T> datas) {
             this.items = datas;
@@ -189,6 +140,11 @@ public class BottomGridDialog extends BaseLazyPopupWindow {
 
         public BottomGridDialog build() {
             return new BottomGridDialog(context, this);
+        }
+
+        public Builder setSpanCount(int spanCount) {
+            this.spanCount = spanCount;
+            return this;
         }
     }
 
