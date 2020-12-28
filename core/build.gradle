@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 14
-        versionName "0.2.3"
+        versionCode 15
+        versionName "0.2.4"
 
         consumerProguardFiles 'consumer-rules.pro'
 
@@ -39,7 +39,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly 'androidx.appcompat:appcompat:1.2.0'
     compileOnly 'androidx.viewpager2:viewpager2:1.0.0'
-    api 'com.github.razerdp:BasePopup:2.2.9'
-    compileOnly 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
+    api 'com.github.razerdp:BasePopup:2.2.11'
+    compileOnly 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.6'
     compileOnly 'com.github.bumptech.glide:glide:4.11.0'
 }

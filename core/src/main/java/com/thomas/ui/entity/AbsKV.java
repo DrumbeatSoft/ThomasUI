@@ -6,6 +6,9 @@ import androidx.annotation.DrawableRes;
 public abstract class AbsKV {
 
 
+    private boolean isChoose = false;
+
+
     /**
      * 获取Name(显示在前端的)
      *
@@ -28,4 +31,12 @@ public abstract class AbsKV {
     public abstract @DrawableRes
     int getResId();
 
+
+    public boolean isChoose() {
+        return isChoose;
+    }
+
+    public void setChoose(boolean choose) {
+        isChoose = choose;
+    }
 }

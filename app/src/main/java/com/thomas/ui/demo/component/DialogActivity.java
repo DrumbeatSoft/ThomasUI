@@ -279,7 +279,7 @@ public class DialogActivity extends DemoActivity {
             lessDatas.add(new MenuBean("thomas_" + i, "00" + i));
         }
 
-        for (int i = 0; i < 80; i++) {
+        for (int i = 0; i < 12000; i++) {
             manyDatas.add(new MenuBean("thomas_" + i, "00" + i));
         }
     }
