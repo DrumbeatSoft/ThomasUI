@@ -257,10 +257,10 @@ public class ListWindow<T extends AbsKV> extends BaseLazyPopupWindow {
         if (TextUtils.isEmpty(s)) {
             results.addAll(items);
         } else {
-            Pattern p = Pattern.compile(s);
+            Pattern p = Pattern.compile(s.toUpperCase());
             for (int i = 0; i < items.size(); i++) {
                 AbsKV currentBean = (AbsKV) items.get(i);
-                Matcher m = p.matcher(currentBean.getKey());
+                Matcher m = p.matcher(currentBean.getKey().toUpperCase());
                 if (m.find()) {
                     results.add(currentBean);
                 }
