@@ -162,6 +162,7 @@ public class DateDialog extends BaseLazyPopupWindow {
 
     private int getDayByYearMonth(int year, int month) {
         Calendar mCalendar = Calendar.getInstance();
+        mCalendar.clear();
         mCalendar.set(Calendar.YEAR, year);
         mCalendar.set(Calendar.MONTH, month - 1);
         return mCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);
@@ -181,6 +182,7 @@ public class DateDialog extends BaseLazyPopupWindow {
 
     private Date getDate(int year, int month, int day) {
         Calendar calendar = Calendar.getInstance();
+        calendar.clear();
         calendar.set(year, month - 1, day, 0, 0, 0);
         return calendar.getTime();
     }

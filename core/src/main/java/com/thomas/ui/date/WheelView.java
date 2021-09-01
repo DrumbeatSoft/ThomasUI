@@ -229,7 +229,7 @@ public class WheelView extends View {
         if (mData != null) {
             mData.clear();
             mData.addAll(data);
-            mSelectPosition = data.size() / 2;
+//            mSelectPosition = data.size() / 2;
         }
     }
 
@@ -268,6 +268,8 @@ public class WheelView extends View {
             }
         }
         invalidate();
+        if (mOnSelectListener != null)
+            mOnSelectListener.onSelect(this, getSelectValue());
     }
 
     public void setDefaultValue(@NonNull String value) {
@@ -282,15 +284,20 @@ public class WheelView extends View {
     }
 
     public void setDefaultValue(@NonNull String value, @DateType.Type String type, String replace) {
+        if (type.equals(DateType.DAY) && Integer.valueOf(value) > mData.size()) {
+            setSelectPosition(mData.size() - 1);
+            return;
+        }
         if (mData.size() > 0) {
             for (int i = 0; i < mData.size(); i++) {
                 String data = getStringToNumber(type, mData.get(i), replace);
                 if (value.equals(data)) {
                     setSelectPosition(i);
-                    break;
+                    return;
                 }
             }
         }
+
     }
 
     private String getStringToNumber(@DateType.Type String type, String value, String replace) {
