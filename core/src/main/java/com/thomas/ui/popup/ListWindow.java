@@ -103,7 +103,9 @@ public class ListWindow<T extends AbsKV> extends BaseLazyPopupWindow {
         setAlignBackground(false);
         setAutoLocatePopup(false);
         setPopupFadeEnable(true);
-        setAdjustInputMethod(true, FLAG_KEYBOARD_IGNORE_OVER | FLAG_KEYBOARD_ANIMATE_ALIGN);
+//        setAdjustInputMethod(true, FLAG_KEYBOARD_IGNORE_OVER | FLAG_KEYBOARD_ANIMATE_ALIGN);//该设置导致黑鲨手机弹窗不显示，其他没遇到
+        setAdjustInputMode(FLAG_KEYBOARD_IGNORE_OVER | FLAG_KEYBOARD_ANIMATE_ALIGN);//该设置黑鲨手机弹窗可显示
+//        setAdjustInputMethod(true);//该设置黑鲨手机弹窗可显示
         super.showPopupWindow(anchorView);
     }
 

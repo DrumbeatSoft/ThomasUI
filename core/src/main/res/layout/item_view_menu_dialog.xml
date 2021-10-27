@@ -17,6 +17,7 @@
         android:checkMark="@drawable/thomas_single_choice_selector"
         android:ellipsize="middle"
         android:gravity="center_vertical"
+        android:textColor="@color/colorAccent"
         android:singleLine="true"
         android:textSize="@dimen/thomasContentSize"
         tools:text="选项一" />

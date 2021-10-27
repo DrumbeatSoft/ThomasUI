@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ellipsize="middle"
+        android:textColor="@color/colorAccent"
         android:gravity="center_vertical"
         android:singleLine="true"
         android:textSize="@dimen/thomasContentSize"
