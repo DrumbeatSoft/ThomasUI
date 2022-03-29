@@ -218,9 +218,9 @@ public class Gloading {
                     if (mCurStatusView != null) {
                         mWrapper.removeView(mCurStatusView);
                     }
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        view.setElevation(Float.MAX_VALUE);
-                    }
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                        view.setElevation(Float.MAX_VALUE);
+//                    }
                     mWrapper.addView(view);
                     ViewGroup.LayoutParams lp = view.getLayoutParams();
                     if (lp != null) {

@@ -172,7 +172,7 @@ public class DialogActivity extends DemoActivity {
 
                 }
                 if (position == 11) {
-                    ThomasPopup.showSingleWithSearch(view, "输入关键字", lessDatas, new OnSingleClickListener() {
+                    ThomasPopup.showSingleWithSearch(view, "输入关键字", manyDatas, new OnSingleClickListener() {
                         @Override
                         public void onClick(int position, String key, String value) {
                             ToastUtils.showLong("点击了第" + position + "条数据，key=" + key + ",value=" + value);
