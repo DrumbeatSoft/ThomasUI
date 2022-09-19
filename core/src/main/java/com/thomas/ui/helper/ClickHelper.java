@@ -33,7 +33,7 @@ public class ClickHelper {
     private static final float PRESSED_BG_DARK_DEFAULT_VALUE = 0.9f;
 
     private static final int DEBOUNCING_TAG = -7;
-    private static final long DEBOUNCING_DEFAULT_VALUE = 400;
+    private static final long DEBOUNCING_DEFAULT_VALUE = 1000;
 
     private ClickHelper() {
         throw new UnsupportedOperationException("u can't instantiate me...");
