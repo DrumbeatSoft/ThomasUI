@@ -103,7 +103,8 @@ public class ListWindow<T extends AbsKV> extends BaseLazyPopupWindow {
         setAlignBackground(false);
         setAutoLocatePopup(false);
         setPopupFadeEnable(true);
-        setAdjustInputMethod(true, FLAG_KEYBOARD_IGNORE_OVER | FLAG_KEYBOARD_ANIMATE_ALIGN);
+        setAdjustInputMethod(false);
+//        setAdjustInputMethod(true, FLAG_KEYBOARD_IGNORE_OVER | FLAG_KEYBOARD_ANIMATE_ALIGN);
         super.showPopupWindow(anchorView);
     }
 
